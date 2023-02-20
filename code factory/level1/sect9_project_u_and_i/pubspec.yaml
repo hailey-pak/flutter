@@ -1,5 +1,5 @@
-name: sect9_project_u_and_i
-description: A new Flutter project.
+name: u_and_i
+description: 섹션 9. [프로젝트] [★★☆☆☆] 만난지 며칠 U&I
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
