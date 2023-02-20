@@ -1,6 +1,6 @@
-# sect9_project_u_and_i
+# u_and_i
 
-A new Flutter project.
+섹션 9. [프로젝트] [★★☆☆☆] 만난지 며칠 U&I
 
 ## Getting Started
 
