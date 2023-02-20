@@ -1,4 +1,4 @@
-image_carousel
+# image_carousel
 
 섹션 7. [프로젝트] [★★☆☆☆] 전자액자
 
