@@ -1,5 +1,5 @@
 # [코드팩토리] [중급] Flutter 진짜 실전! 
-코드팩토리의 Flutter 중급 코스 상태관리, 캐시관리, Code Generation, GoRouter, 인증로직 등 중수가 되기 위한 필수 스킬들!
+상태관리, 캐시관리, Code Generation, GoRouter, 인증로직 등 중수가 되기 위한 필수 스킬들!
 스터디 기록 --> [강의 페이지](https://www.inflearn.com/course/%ED%94%8C%EB%9F%AC%ED%84%B0-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8)
 
 <br/><br/>
