@@ -1,19 +1,14 @@
 import 'package:dio/dio.dart';
-import 'package:dusty_dust/component/card_title.dart';
-import 'package:dusty_dust/component/category_card.dart';
-import 'package:dusty_dust/component/hourly_card.dart';
+import 'package:dusty_dust/container/category_card.dart';
+import 'package:dusty_dust/container/hourly_card.dart';
 import 'package:dusty_dust/component/main_app_bar.dart';
-import 'package:dusty_dust/component/main_card.dart';
 import 'package:dusty_dust/component/main_drawer.dart';
-import 'package:dusty_dust/component/main_stat.dart';
-import 'package:dusty_dust/const/data.dart';
 import 'package:dusty_dust/const/regions.dart';
-import 'package:dusty_dust/const/status_level.dart';
-import 'package:dusty_dust/model/stat_and_status_model.dart';
 import 'package:dusty_dust/model/stat_model.dart';
 import 'package:dusty_dust/repository/stat_repository.dart';
 import 'package:dusty_dust/utils/data_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -32,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
 
     scrollController.addListener(scrollListener);
+    fetchData();
   }
 
   @override
@@ -41,33 +37,62 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
+  Future<void> fetchData() async {
+    try {
+      final now = DateTime.now().toUtc();
+      final fetchTime = DateTime(
+        now.year,
+        now.month,
+        now.day,
+        now.hour,
+      );
 
-  Future<Map<ItemCode, List<StatModel>>> fetchData() async {
-    Map<ItemCode, List<StatModel>> stats = {};
+      final box = Hive.box<StatModel>(ItemCode.PM10.name);
 
-    List<Future> futures = [];
+      if (box.values.isNotEmpty &&
+          (box.values.last).dataTime.isAtSameMomentAs(fetchTime)) {
+        print('이미 최신 데이터가 있습니다.');
+        return;
+      }
+      List<Future> futures = [];
 
-    for (ItemCode itemCode in ItemCode.values) {
-      futures.add(
-        StatRepository.fetchData(
-          itemCode: itemCode,
+      for (ItemCode itemCode in ItemCode.values) {
+        futures.add(
+          StatRepository.fetchData(
+            itemCode: itemCode,
+          ),
+        );
+      }
+
+      // Future에 들어오는 순서대로 그대로 result를 받을 수 있음
+      final results = await Future.wait(futures);
+
+      for (int i = 0; i < results.length; i++) {
+        // ItemCode
+        final key = ItemCode.values[i];
+        // List<StatModel>
+        final value = results[i];
+
+        final box = Hive.box<StatModel>(key.name);
+
+        for (StatModel stat in value) {
+          box.put(stat.dataTime.toString(), stat);
+        }
+
+        final allKeys = box.keys.toList();
+
+        if (allKeys.length > 24) {
+          final deleteKeys = allKeys.sublist(0, allKeys.length - 24);
+          box.deleteAll(deleteKeys);
+        }
+      }
+    } on DioError {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('인터넷 연결이 원활하지 않습니다.'),
         ),
       );
     }
-
-    // Future에 들어오는 순서대로 그대로 result를 받을 수 있음
-    final results = await Future.wait(futures);
-
-    for (int i = 0; i < results.length; i++) {
-      final key = ItemCode.values[i];
-      final value = results[i];
-
-      stats.addAll({
-        key: value,
-      });
-    }
-
-    return stats;
   }
 
   scrollListener() {
@@ -82,73 +107,52 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<Map<ItemCode, List<StatModel>>>(
-        future: fetchData(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            // 에러가 있을 때
-            return Scaffold(
-              body: Center(
-                child: Text('에러가 있습니다.'),
-              ),
-            );
-          }
-
-          if (!snapshot.hasData) {
-            // 로딩 상태
-            return Scaffold(
-              body: Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
-          }
-
-          Map<ItemCode, List<StatModel>> stats = snapshot.data!;
-          StatModel pm10RecentStat = stats[ItemCode.PM10]![0];
-
-          // 미세먼지 최근 데이터의 현재 상태
-          final status = DataUtils.getStatusFromItemCodeAndValue(
-            value: pm10RecentStat.getLevelFromRegion(region),
-            itemCode: ItemCode.PM10,
+    return ValueListenableBuilder<Box>(
+      valueListenable: Hive.box<StatModel>(ItemCode.PM10.name).listenable(),
+      //화면의 색상이 미세먼지를 기준으로 결정되기 때문에 미세먼지 값을 확인
+      builder: (context, box, widget) {
+        if (box.values.isEmpty) {
+          return Center(
+            child: CircularProgressIndicator(),
           );
+        }
 
-          final ssModel = stats.keys.map((key) {
-            final value = stats[key]!;
-            final stat = value[0];
+        // PM10 (미세먼지)
+        // box.value.toList().last
+        final recentStat = box.values.toList().last as StatModel;
 
-            return StatAndStatusModel(
-              itemCode: key,
-              status: DataUtils.getStatusFromItemCodeAndValue(
-                value: stat.getLevelFromRegion(region),
-                itemCode: key,
-              ),
-              stat: stat,
-            );
-          }).toList();
+        final status = DataUtils.getStatusFromItemCodeAndValue(
+          value: recentStat.getLevelFromRegion(region),
+          itemCode: ItemCode.PM10,
+        );
 
-          return Scaffold(
-            drawer: MainDrawer(
-              darkColor: status.darkColor,
-              lightColor: status.lightColor,
-              selectedRegion: region,
-              onRegionTap: (String region) {
-                setState(() {
-                  this.region = region;
-                });
-                Navigator.of(context)
-                    .pop(); // Drawer에서 지역 선택 후 뒤로가기를 통해 Drawer 닫기
+        return Scaffold(
+          drawer: MainDrawer(
+            darkColor: status.darkColor,
+            lightColor: status.lightColor,
+            selectedRegion: region,
+            onRegionTap: (String region) {
+              setState(() {
+                this.region = region;
+              });
+              Navigator.of(context)
+                  .pop(); // Drawer에서 지역 선택 후 뒤로가기를 통해 Drawer 닫기
+            },
+          ),
+          body: Container(
+            color: status.primaryColor,
+            child: RefreshIndicator(
+              onRefresh: () async {
+                await fetchData();
               },
-            ),
-            body: Container(
-              color: status.primaryColor,
               child: CustomScrollView(
                 controller: scrollController,
                 slivers: [
                   MainAppBar(
                     region: region,
-                    stat: pm10RecentStat,
+                    stat: recentStat,
                     status: status,
-                    dateTime: pm10RecentStat.dataTime,
+                    dateTime: recentStat.dataTime,
                     isExpanded: isExpanded,
                   ),
                   SliverToBoxAdapter(
@@ -157,15 +161,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         CategoryCard(
                           region: region,
-                          models: ssModel,
                           darkColor: status.darkColor,
                           lightColor: status.lightColor,
                         ),
                         const SizedBox(height: 16.0),
-                        ...stats.keys.map(
-                              (itemCode) {
-                            final stat = stats[itemCode]!;
-
+                        ...ItemCode.values.map(
+                          (itemCode) {
                             return Padding(
                               padding: const EdgeInsets.only(
                                 bottom: 16.0,
@@ -173,11 +174,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: HourlyCard(
                                 darkColor: status.darkColor,
                                 lightColor: status.lightColor,
-                                category: DataUtils.getItemCodeKrString(
-                                  itemCode: itemCode,
-                                ),
-                                stats: stat,
                                 region: region,
+                                itemCode: itemCode,
                               ),
                             );
                           },
@@ -189,7 +187,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 }

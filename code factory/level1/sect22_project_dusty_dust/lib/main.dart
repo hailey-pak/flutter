@@ -1,7 +1,5 @@
 import 'package:dusty_dust/model/stat_model.dart';
 import 'package:dusty_dust/screen/home_screen.dart';
-import 'package:dusty_dust/screen/test2_screen.dart';
-import 'package:dusty_dust/screen/test_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -32,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'sunflower',
       ),
-      home: const TestScreen(),
+      home: const HomeScreen(),
     );
   }
 }
