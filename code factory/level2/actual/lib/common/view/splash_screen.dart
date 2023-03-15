@@ -36,10 +36,21 @@ class _SplashScreenState extends State<SplashScreen> {
         'http://$ip/auth/token',
         options: Options(
           headers: {
-            'authorization': 'Bearar $refreshToken',
+            'authorization': 'Bearer $refreshToken',
           },
         ),
       );
+
+      await storage.write(key: ACCESS_TOKEN_KEY, value: resp.data['accessToken']);
+
+      // 정상적으로 로그인이 된다면 탭화면으로 이동
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+          builder: (_) => RootTab(),
+        ),
+            (route) => false,
+      );
+
     } catch (e) {   //에러 발생 시 로그인 페이지로 이동
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(
@@ -49,13 +60,6 @@ class _SplashScreenState extends State<SplashScreen> {
       );
     }
 
-    // 정상적으로 로그인이 된다면 탭화면으로 이동
-    Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(
-        builder: (_) => RootTab(),
-      ),
-      (route) => false,
-    );
   }
 
   @override
