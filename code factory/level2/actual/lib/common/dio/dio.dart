@@ -1,6 +1,20 @@
 import 'package:actual/common/const/data.dart';
+import 'package:actual/common/secure_storage/secure_storage.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+final dioProvider = Provider<Dio>((ref) {
+  final dio = Dio();
+
+  final storage = ref.watch(secureStorageProvider);
+
+  dio.interceptors.add(
+    CustomInterceptor(storage: storage),
+  );
+
+  return dio;
+});
 
 class CustomInterceptor extends Interceptor {
   final FlutterSecureStorage storage;
@@ -13,7 +27,8 @@ class CustomInterceptor extends Interceptor {
   // 요청이 보내질 때마다 요청의 Header에 accessToken: true라는 값이 힜다면
   // 실제 토큰을 storage에서 가져와서 authorization: bearer $token 으로 헤더를 변경한다.
   @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+  void onRequest(
+      RequestOptions options, RequestInterceptorHandler handler) async {
     print('[REQ] [${options.method}] ${options.uri}');
 
     // 헤더 삭제
@@ -24,7 +39,7 @@ class CustomInterceptor extends Interceptor {
 
       //실제 토큰으로 대체
       options.headers.addAll({
-        'authorization' : 'Bearer $token',
+        'authorization': 'Bearer $token',
       });
     }
 
@@ -36,7 +51,7 @@ class CustomInterceptor extends Interceptor {
 
       //실제 토큰으로 대체
       options.headers.addAll({
-        'authorization' : 'Bearer $token',
+        'authorization': 'Bearer $token',
       });
     }
 
@@ -46,11 +61,11 @@ class CustomInterceptor extends Interceptor {
   // 2) 응답을 받을 때
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    print('[RES] [${response.requestOptions.method}] ${response.requestOptions.uri}');
+    print(
+        '[RES] [${response.requestOptions.method}] ${response.requestOptions.uri}');
 
     super.onResponse(response, handler);
   }
-
 
   // 3) 에러가 났을 때
   @override
@@ -94,16 +109,13 @@ class CustomInterceptor extends Interceptor {
         await storage.write(key: ACCESS_TOKEN_KEY, value: accessToken);
 
         // 요청 재전송
-       final response = await dio.fetch(options);
-       return handler.resolve(response);
-
-      } on DioError catch(e) {
+        final response = await dio.fetch(options);
+        return handler.resolve(response);
+      } on DioError catch (e) {
         return handler.reject(e);
       }
     }
 
     return super.onError(err, handler);
   }
-
-
 }
