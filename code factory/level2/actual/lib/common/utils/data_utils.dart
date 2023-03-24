@@ -17,4 +17,8 @@ class DataUtils {
 
     return stringToBase64.encode(plain);
   }
+
+  static DateTime stringToDateTime(String value) {
+    return DateTime.parse(value);
+  }
 }

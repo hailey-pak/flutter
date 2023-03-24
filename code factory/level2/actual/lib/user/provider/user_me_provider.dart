@@ -45,9 +45,10 @@ class UserMeStateNotifier extends StateNotifier<UserModelBase?> {
 
     try {
       final resp = await repository.getMe();
+
       state = resp;
 
-    } catch (e, stack) {
+    } catch(e, stack) {
       print(e);
       print(stack);
 
