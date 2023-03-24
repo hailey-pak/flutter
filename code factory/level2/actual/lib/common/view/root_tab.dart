@@ -2,9 +2,12 @@ import 'package:actual/common/const/colors.dart';
 import 'package:actual/common/layout/defalut_layout.dart';
 import 'package:actual/product/view/product_screen.dart';
 import 'package:actual/restaurant/view/restaurant_screen.dart';
+import 'package:actual/user/view/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class RootTab extends StatefulWidget {
+  static String get routeName => 'home';
+
   const RootTab({Key? key}) : super(key: key);
 
   @override
@@ -12,7 +15,7 @@ class RootTab extends StatefulWidget {
 }
 
 class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
-  late TabController controller;    // late --> 나중에 값이 선언 될 거라는 것을 표시해주는 지시어
+  late TabController controller; // late --> 나중에 값이 선언 될 거라는 것을 표시해주는 지시어
 
   int index = 0;
 
@@ -47,9 +50,8 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
           RestaurantScreen(),
           ProductScreen(),
           Container(child: Center(child: Text('주문'))),
-          Container(child: Center(child: Text('프로필'))),
+          ProfileScreen(),
         ],
-
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: PRIMARY_COLOR,
