@@ -29,18 +29,18 @@ packages:
     dependency: transitive
     description:
       name: async
-      sha256: "947bfcf187f74dbc5e146c9eb9c0f10c9f8b30743e341481c1e2ed3ecc18c20c"
+      sha256: bfe67ef28df125b7dddcea62755991f807aa39a2492a23e1550161692950bbe0
       url: "https://pub.dev"
     source: hosted
-    version: "2.11.0"
+    version: "2.10.0"
   badges:
     dependency: "direct main"
     description:
       name: badges
-      sha256: "461031a60efbb95276f52107f63d5d45008b5ca1eb7f8ca440cadda9ec2143b0"
+      sha256: d33d4e07197d6e61ddc940640f2b4dc303d3c80887011344940e24d7522f8d26
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.2"
+    version: "3.0.3"
   boolean_selector:
     dependency: transitive
     description:
