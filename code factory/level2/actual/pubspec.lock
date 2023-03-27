@@ -29,10 +29,10 @@ packages:
     dependency: transitive
     description:
       name: async
-      sha256: bfe67ef28df125b7dddcea62755991f807aa39a2492a23e1550161692950bbe0
+      sha256: "947bfcf187f74dbc5e146c9eb9c0f10c9f8b30743e341481c1e2ed3ecc18c20c"
       url: "https://pub.dev"
     source: hosted
-    version: "2.10.0"
+    version: "2.11.0"
   badges:
     dependency: "direct main"
     description:
@@ -185,6 +185,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.0"
+  debounce_throttle:
+    dependency: "direct main"
+    description:
+      name: debounce_throttle
+      sha256: c95cf47afda975fc507794a52040a16756fb2f31ad3027d4e691c41862ff5692
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   dio:
     dependency: "direct main"
     description:
@@ -536,6 +544,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.3"
+  simple_observable:
+    dependency: transitive
+    description:
+      name: simple_observable
+      sha256: b392795c48f8b5f301b4c8f73e15f56e38fe70f42278c649d8325e859a783301
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   skeletons:
     dependency: "direct main"
     description:
