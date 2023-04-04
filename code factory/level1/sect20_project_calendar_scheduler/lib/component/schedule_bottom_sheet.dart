@@ -42,7 +42,6 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
               ? null
               : GetIt.I<LocalDatabase>().getScheduleById(widget.scheduleId!),
           builder: (context, snapshot) {
-
             if (snapshot.hasError) {
               return const Center(
                 child: Text('스케줄을 불러올 수 없습니다.'),
@@ -50,9 +49,10 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
             }
 
             // FutureBuilder 가 처음 실행됐고 로딩 중일 때 (데이터를 가져오는 중일 때)
-            if (snapshot.connectionState != ConnectionState.none && !snapshot.hasData) {
+            if (snapshot.connectionState != ConnectionState.none &&
+                !snapshot.hasData) {
               return const Center(
-               child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(),
               );
             }
 
@@ -71,7 +71,8 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
                 child: Padding(
                   padding: EdgeInsets.only(bottom: bottomInset),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
+                    padding:
+                        const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
                     child: Form(
                       key: formKey,
                       // autovalidateMode: AutovalidateMode.always,
@@ -152,7 +153,8 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
       if (widget.scheduleId == null) {
         await GetIt.I<LocalDatabase>().createSchedule(newSchedule);
       } else {
-        await GetIt.I<LocalDatabase>().updateScheduleById(widget.scheduleId!, newSchedule);
+        await GetIt.I<LocalDatabase>()
+            .updateScheduleById(widget.scheduleId!, newSchedule);
       }
 
       if (!context.mounted) return;
@@ -182,20 +184,22 @@ class _Time extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-            child: CustomTextField(
-          label: '시작 시간',
-          isTime: true,
-          onSaved: onStartSaved,
-          initialValue: startInitValue,
-        )),
+          child: CustomTextField(
+            label: '시작 시간',
+            isTime: true,
+            onSaved: onStartSaved,
+            initialValue: startInitValue,
+          ),
+        ),
         const SizedBox(width: 16.0),
         Expanded(
-            child: CustomTextField(
-          label: '마감 시간',
-          isTime: true,
-          onSaved: onEndSaved,
-          initialValue: endInitValue,
-        )),
+          child: CustomTextField(
+            label: '마감 시간',
+            isTime: true,
+            onSaved: onEndSaved,
+            initialValue: endInitValue,
+          ),
+        ),
       ],
     );
   }
