@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sample_form/layout/default_layout.dart';
-import 'package:sample_form/screen/detail_form.dart';
+import 'package:sample_form/screen/detail_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () {
             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => DetailForm()));
+                .push(MaterialPageRoute(builder: (_) => DetailScreen()));
           },
           child: Text('입력폼으로 이동'),
           style: ElevatedButton.styleFrom(
