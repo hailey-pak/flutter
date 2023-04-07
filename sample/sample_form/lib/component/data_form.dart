@@ -33,6 +33,7 @@ class DataForm extends StatelessWidget {
             name: 'date',
             labelText: '날짜',
           ),
+
         ],
       ),
     );
