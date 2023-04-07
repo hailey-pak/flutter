@@ -44,9 +44,10 @@ class _HomeScreenState extends State<HomeScreen> {
         setState(() => polygons.add(poly));
       }
     });
+
     geojson.endSignal.listen((bool _) => geojson.dispose());
-    final data = await rootBundle.loadString('assets/SGG.json');
-    // final data = await rootBundle.loadString('assets/countries.geojson');
+    // final data = await rootBundle.loadString('assets/SGG.json');
+    final data = await rootBundle.loadString('assets/points.geojson');
     await geojson.parse(data, verbose: true);
   }
 
