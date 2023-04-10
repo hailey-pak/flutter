@@ -1,0 +1,586 @@
+[
+ {
+  "INPUT_FID": "1",
+  "EMD_CD": "50130259",
+  "EMD_NM": "성산읍",
+  "SGG_OID": 2322,
+  "COL_ADM_SE": "50130",
+  "GID": 5786
+ },
+ {
+  "INPUT_FID": "2",
+  "EMD_CD": "50130310",
+  "EMD_NM": "안덕면",
+  "SGG_OID": 1698,
+  "COL_ADM_SE": "50130",
+  "GID": 4982
+ },
+ {
+  "INPUT_FID": "3",
+  "EMD_CD": "50130250",
+  "EMD_NM": "대정읍",
+  "SGG_OID": 1363,
+  "COL_ADM_SE": "50130",
+  "GID": 4983
+ },
+ {
+  "INPUT_FID": "4",
+  "EMD_CD": "50130116",
+  "EMD_NM": "강정동",
+  "SGG_OID": 2321,
+  "COL_ADM_SE": "50130",
+  "GID": 4984
+ },
+ {
+  "INPUT_FID": "5",
+  "EMD_CD": "50130106",
+  "EMD_NM": "서홍동",
+  "SGG_OID": 373,
+  "COL_ADM_SE": "50130",
+  "GID": 4985
+ },
+ {
+  "INPUT_FID": "6",
+  "EMD_CD": "50130101",
+  "EMD_NM": "서귀동",
+  "SGG_OID": 372,
+  "COL_ADM_SE": "50130",
+  "GID": 4986
+ },
+ {
+  "INPUT_FID": "7",
+  "EMD_CD": "50130320",
+  "EMD_NM": "표선면",
+  "SGG_OID": 371,
+  "COL_ADM_SE": "50130",
+  "GID": 4987
+ },
+ {
+  "INPUT_FID": "8",
+  "EMD_CD": "50130120",
+  "EMD_NM": "상예동",
+  "SGG_OID": 370,
+  "COL_ADM_SE": "50130",
+  "GID": 4988
+ },
+ {
+  "INPUT_FID": "9",
+  "EMD_CD": "50130117",
+  "EMD_NM": "도순동",
+  "SGG_OID": 369,
+  "COL_ADM_SE": "50130",
+  "GID": 4989
+ },
+ {
+  "INPUT_FID": "10",
+  "EMD_CD": "50130115",
+  "EMD_NM": "월평동",
+  "SGG_OID": 80,
+  "COL_ADM_SE": "50130",
+  "GID": 4990
+ },
+ {
+  "INPUT_FID": "11",
+  "EMD_CD": "50130119",
+  "EMD_NM": "색달동",
+  "SGG_OID": 78,
+  "COL_ADM_SE": "50130",
+  "GID": 4991
+ },
+ {
+  "INPUT_FID": "12",
+  "EMD_CD": "50130107",
+  "EMD_NM": "상효동",
+  "SGG_OID": 77,
+  "COL_ADM_SE": "50130",
+  "GID": 4992
+ },
+ {
+  "INPUT_FID": "13",
+  "EMD_CD": "50130121",
+  "EMD_NM": "하예동",
+  "SGG_OID": 76,
+  "COL_ADM_SE": "50130",
+  "GID": 4993
+ },
+ {
+  "INPUT_FID": "14",
+  "EMD_CD": "50130110",
+  "EMD_NM": "보목동",
+  "SGG_OID": 390,
+  "COL_ADM_SE": "50130",
+  "GID": 4994
+ },
+ {
+  "INPUT_FID": "15",
+  "EMD_CD": "50130109",
+  "EMD_NM": "신효동",
+  "SGG_OID": 389,
+  "COL_ADM_SE": "50130",
+  "GID": 4995
+ },
+ {
+  "INPUT_FID": "16",
+  "EMD_CD": "50130113",
+  "EMD_NM": "회수동",
+  "SGG_OID": 388,
+  "COL_ADM_SE": "50130",
+  "GID": 4996
+ },
+ {
+  "INPUT_FID": "17",
+  "EMD_CD": "50130104",
+  "EMD_NM": "호근동",
+  "SGG_OID": 387,
+  "COL_ADM_SE": "50130",
+  "GID": 4997
+ },
+ {
+  "INPUT_FID": "18",
+  "EMD_CD": "50130118",
+  "EMD_NM": "하원동",
+  "SGG_OID": 386,
+  "COL_ADM_SE": "50130",
+  "GID": 4998
+ },
+ {
+  "INPUT_FID": "19",
+  "EMD_CD": "50130122",
+  "EMD_NM": "영남동",
+  "SGG_OID": 384,
+  "COL_ADM_SE": "50130",
+  "GID": 4999
+ },
+ {
+  "INPUT_FID": "20",
+  "EMD_CD": "50130114",
+  "EMD_NM": "대포동",
+  "SGG_OID": 722,
+  "COL_ADM_SE": "50130",
+  "GID": 5000
+ },
+ {
+  "INPUT_FID": "21",
+  "EMD_CD": "50130112",
+  "EMD_NM": "중문동",
+  "SGG_OID": 721,
+  "COL_ADM_SE": "50130",
+  "GID": 5001
+ },
+ {
+  "INPUT_FID": "22",
+  "EMD_CD": "50130102",
+  "EMD_NM": "법환동",
+  "SGG_OID": 418,
+  "COL_ADM_SE": "50130",
+  "GID": 5002
+ },
+ {
+  "INPUT_FID": "23",
+  "EMD_CD": "50130103",
+  "EMD_NM": "서호동",
+  "SGG_OID": 417,
+  "COL_ADM_SE": "50130",
+  "GID": 5003
+ },
+ {
+  "INPUT_FID": "24",
+  "EMD_CD": "50130253",
+  "EMD_NM": "남원읍",
+  "SGG_OID": 380,
+  "COL_ADM_SE": "50130",
+  "GID": 5005
+ },
+ {
+  "INPUT_FID": "25",
+  "EMD_CD": "50130105",
+  "EMD_NM": "동홍동",
+  "SGG_OID": 378,
+  "COL_ADM_SE": "50130",
+  "GID": 5006
+ },
+ {
+  "INPUT_FID": "26",
+  "EMD_CD": "50130111",
+  "EMD_NM": "토평동",
+  "SGG_OID": 377,
+  "COL_ADM_SE": "50130",
+  "GID": 5007
+ },
+ {
+  "INPUT_FID": "27",
+  "EMD_CD": "50130108",
+  "EMD_NM": "하효동",
+  "SGG_OID": 375,
+  "COL_ADM_SE": "50130",
+  "GID": 5008
+ },
+ {
+  "INPUT_FID": "28",
+  "EMD_CD": "50110107",
+  "EMD_NM": "건입동",
+  "SGG_OID": 466,
+  "COL_ADM_SE": "50110",
+  "GID": 5009
+ },
+ {
+  "INPUT_FID": "29",
+  "EMD_CD": "50110130",
+  "EMD_NM": "도련일동",
+  "SGG_OID": 146,
+  "COL_ADM_SE": "50110",
+  "GID": 5010
+ },
+ {
+  "INPUT_FID": "30",
+  "EMD_CD": "50110131",
+  "EMD_NM": "도련이동",
+  "SGG_OID": 145,
+  "COL_ADM_SE": "50110",
+  "GID": 5011
+ },
+ {
+  "INPUT_FID": "31",
+  "EMD_CD": "50110126",
+  "EMD_NM": "이호이동",
+  "SGG_OID": 143,
+  "COL_ADM_SE": "50110",
+  "GID": 5012
+ },
+ {
+  "INPUT_FID": "32",
+  "EMD_CD": "50110123",
+  "EMD_NM": "외도일동",
+  "SGG_OID": 142,
+  "COL_ADM_SE": "50110",
+  "GID": 5013
+ },
+ {
+  "INPUT_FID": "33",
+  "EMD_CD": "50110128",
+  "EMD_NM": "도두이동",
+  "SGG_OID": 141,
+  "COL_ADM_SE": "50110",
+  "GID": 5014
+ },
+ {
+  "INPUT_FID": "34",
+  "EMD_CD": "50110125",
+  "EMD_NM": "이호일동",
+  "SGG_OID": 140,
+  "COL_ADM_SE": "50110",
+  "GID": 5015
+ },
+ {
+  "INPUT_FID": "35",
+  "EMD_CD": "50110140",
+  "EMD_NM": "내도동",
+  "SGG_OID": 139,
+  "COL_ADM_SE": "50110",
+  "GID": 5016
+ },
+ {
+  "INPUT_FID": "36",
+  "EMD_CD": "50110120",
+  "EMD_NM": "오라이동",
+  "SGG_OID": 137,
+  "COL_ADM_SE": "50110",
+  "GID": 5017
+ },
+ {
+  "INPUT_FID": "37",
+  "EMD_CD": "50110102",
+  "EMD_NM": "일도이동",
+  "SGG_OID": 136,
+  "COL_ADM_SE": "50110",
+  "GID": 5018
+ },
+ {
+  "INPUT_FID": "38",
+  "EMD_CD": "50110310",
+  "EMD_NM": "한경면",
+  "SGG_OID": 135,
+  "COL_ADM_SE": "50110",
+  "GID": 5019
+ },
+ {
+  "INPUT_FID": "39",
+  "EMD_CD": "50110129",
+  "EMD_NM": "도남동",
+  "SGG_OID": 134,
+  "COL_ADM_SE": "50110",
+  "GID": 5020
+ },
+ {
+  "INPUT_FID": "40",
+  "EMD_CD": "50110104",
+  "EMD_NM": "이도이동",
+  "SGG_OID": 133,
+  "COL_ADM_SE": "50110",
+  "GID": 5021
+ },
+ {
+  "INPUT_FID": "41",
+  "EMD_CD": "50110119",
+  "EMD_NM": "오라일동",
+  "SGG_OID": 132,
+  "COL_ADM_SE": "50110",
+  "GID": 5022
+ },
+ {
+  "INPUT_FID": "42",
+  "EMD_CD": "50110127",
+  "EMD_NM": "도두일동",
+  "SGG_OID": 129,
+  "COL_ADM_SE": "50110",
+  "GID": 5023
+ },
+ {
+  "INPUT_FID": "43",
+  "EMD_CD": "50110117",
+  "EMD_NM": "아라일동",
+  "SGG_OID": 128,
+  "COL_ADM_SE": "50110",
+  "GID": 5024
+ },
+ {
+  "INPUT_FID": "44",
+  "EMD_CD": "50110114",
+  "EMD_NM": "삼양이동",
+  "SGG_OID": 127,
+  "COL_ADM_SE": "50110",
+  "GID": 5025
+ },
+ {
+  "INPUT_FID": "45",
+  "EMD_CD": "50110112",
+  "EMD_NM": "화북이동",
+  "SGG_OID": 126,
+  "COL_ADM_SE": "50110",
+  "GID": 5026
+ },
+ {
+  "INPUT_FID": "46",
+  "EMD_CD": "50110136",
+  "EMD_NM": "영평동",
+  "SGG_OID": 123,
+  "COL_ADM_SE": "50110",
+  "GID": 5027
+ },
+ {
+  "INPUT_FID": "47",
+  "EMD_CD": "50110122",
+  "EMD_NM": "노형동",
+  "SGG_OID": 122,
+  "COL_ADM_SE": "50110",
+  "GID": 5028
+ },
+ {
+  "INPUT_FID": "48",
+  "EMD_CD": "50110113",
+  "EMD_NM": "삼양일동",
+  "SGG_OID": 121,
+  "COL_ADM_SE": "50110",
+  "GID": 5029
+ },
+ {
+  "INPUT_FID": "49",
+  "EMD_CD": "50110118",
+  "EMD_NM": "아라이동",
+  "SGG_OID": 120,
+  "COL_ADM_SE": "50110",
+  "GID": 5030
+ },
+ {
+  "INPUT_FID": "50",
+  "EMD_CD": "50110256",
+  "EMD_NM": "구좌읍",
+  "SGG_OID": 119,
+  "COL_ADM_SE": "50110",
+  "GID": 5031
+ },
+ {
+  "INPUT_FID": "51",
+  "EMD_CD": "50110135",
+  "EMD_NM": "월평동",
+  "SGG_OID": 118,
+  "COL_ADM_SE": "50110",
+  "GID": 5032
+ },
+ {
+  "INPUT_FID": "52",
+  "EMD_CD": "50110111",
+  "EMD_NM": "화북일동",
+  "SGG_OID": 117,
+  "COL_ADM_SE": "50110",
+  "GID": 5033
+ },
+ {
+  "INPUT_FID": "53",
+  "EMD_CD": "50110124",
+  "EMD_NM": "외도이동",
+  "SGG_OID": 116,
+  "COL_ADM_SE": "50110",
+  "GID": 5034
+ },
+ {
+  "INPUT_FID": "54",
+  "EMD_CD": "50110132",
+  "EMD_NM": "용강동",
+  "SGG_OID": 115,
+  "COL_ADM_SE": "50110",
+  "GID": 5035
+ },
+ {
+  "INPUT_FID": "55",
+  "EMD_CD": "50110139",
+  "EMD_NM": "해안동",
+  "SGG_OID": 114,
+  "COL_ADM_SE": "50110",
+  "GID": 5036
+ },
+ {
+  "INPUT_FID": "56",
+  "EMD_CD": "50110138",
+  "EMD_NM": "도평동",
+  "SGG_OID": 113,
+  "COL_ADM_SE": "50110",
+  "GID": 5037
+ },
+ {
+  "INPUT_FID": "57",
+  "EMD_CD": "50110259",
+  "EMD_NM": "조천읍",
+  "SGG_OID": 112,
+  "COL_ADM_SE": "50110",
+  "GID": 5038
+ },
+ {
+  "INPUT_FID": "58",
+  "EMD_CD": "50110110",
+  "EMD_NM": "용담삼동",
+  "SGG_OID": 111,
+  "COL_ADM_SE": "50110",
+  "GID": 5039
+ },
+ {
+  "INPUT_FID": "59",
+  "EMD_CD": "50110137",
+  "EMD_NM": "연동",
+  "SGG_OID": 110,
+  "COL_ADM_SE": "50110",
+  "GID": 5040
+ },
+ {
+  "INPUT_FID": "60",
+  "EMD_CD": "50110116",
+  "EMD_NM": "봉개동",
+  "SGG_OID": 109,
+  "COL_ADM_SE": "50110",
+  "GID": 5041
+ },
+ {
+  "INPUT_FID": "61",
+  "EMD_CD": "50110109",
+  "EMD_NM": "용담이동",
+  "SGG_OID": 108,
+  "COL_ADM_SE": "50110",
+  "GID": 5042
+ },
+ {
+  "INPUT_FID": "62",
+  "EMD_CD": "50110121",
+  "EMD_NM": "오라삼동",
+  "SGG_OID": 107,
+  "COL_ADM_SE": "50110",
+  "GID": 5043
+ },
+ {
+  "INPUT_FID": "63",
+  "EMD_CD": "50110330",
+  "EMD_NM": "우도면",
+  "SGG_OID": 106,
+  "COL_ADM_SE": "50110",
+  "GID": 5044
+ },
+ {
+  "INPUT_FID": "64",
+  "EMD_CD": "50110105",
+  "EMD_NM": "삼도일동",
+  "SGG_OID": 105,
+  "COL_ADM_SE": "50110",
+  "GID": 5045
+ },
+ {
+  "INPUT_FID": "65",
+  "EMD_CD": "50110101",
+  "EMD_NM": "일도일동",
+  "SGG_OID": 104,
+  "COL_ADM_SE": "50110",
+  "GID": 5046
+ },
+ {
+  "INPUT_FID": "66",
+  "EMD_CD": "50110133",
+  "EMD_NM": "회천동",
+  "SGG_OID": 103,
+  "COL_ADM_SE": "50110",
+  "GID": 5047
+ },
+ {
+  "INPUT_FID": "67",
+  "EMD_CD": "50110108",
+  "EMD_NM": "용담일동",
+  "SGG_OID": 102,
+  "COL_ADM_SE": "50110",
+  "GID": 5048
+ },
+ {
+  "INPUT_FID": "68",
+  "EMD_CD": "50110106",
+  "EMD_NM": "삼도이동",
+  "SGG_OID": 101,
+  "COL_ADM_SE": "50110",
+  "GID": 5049
+ },
+ {
+  "INPUT_FID": "69",
+  "EMD_CD": "50110103",
+  "EMD_NM": "이도일동",
+  "SGG_OID": 100,
+  "COL_ADM_SE": "50110",
+  "GID": 5050
+ },
+ {
+  "INPUT_FID": "70",
+  "EMD_CD": "50110115",
+  "EMD_NM": "삼양삼동",
+  "SGG_OID": 99,
+  "COL_ADM_SE": "50110",
+  "GID": 5051
+ },
+ {
+  "INPUT_FID": "71",
+  "EMD_CD": "50110253",
+  "EMD_NM": "애월읍",
+  "SGG_OID": 98,
+  "COL_ADM_SE": "50110",
+  "GID": 5052
+ },
+ {
+  "INPUT_FID": "72",
+  "EMD_CD": "50110134",
+  "EMD_NM": "오등동",
+  "SGG_OID": 97,
+  "COL_ADM_SE": "50110",
+  "GID": 5053
+ },
+ {
+  "INPUT_FID": "74",
+  "EMD_CD": "50110250",
+  "EMD_NM": "한림읍",
+  "SGG_OID": 1425,
+  "COL_ADM_SE": "50110",
+  "GID": 5055
+ }
+]
