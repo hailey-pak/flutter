@@ -1,25 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:test_reactive_forms/component/sample_form.dart';
+import 'package:test_reactive_forms/component/data_form.dart';
 import 'package:test_reactive_forms/layout/default_layout.dart';
+import 'package:test_reactive_forms/model/field_model.dart';
 
-class DetailScreen extends StatefulWidget {
-  const DetailScreen({Key? key}) : super(key: key);
+class DetailScreen extends StatelessWidget {
+  final String fid;
+  final List<FieldModel> fields;
 
-  @override
-  State<DetailScreen> createState() => _DetailScreenState();
-}
-
-class _DetailScreenState extends State<DetailScreen> {
+  const DetailScreen({
+    required this.fid,
+    required this.fields,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const DefaultLayout(
+    return DefaultLayout(
       title: 'Detail Screen',
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(16.0),
-            child: SampleForm(),
+            child: DataForm(
+                fields: fields,
+                fid: fid),
           ),
         ),
       ),
