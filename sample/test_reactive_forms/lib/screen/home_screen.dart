@@ -99,6 +99,14 @@ class _HomeScreenState extends State<HomeScreen> {
         valueType: int,
         readOnly: true,
       ),
+
+      FieldModel(
+        columnName: 'check',
+        labelText: '체크박스',
+        controlType: ControlType.CheckBox,
+        valueType: bool,
+        readOnly: false,
+      )
     });
 
     return DefaultLayout(

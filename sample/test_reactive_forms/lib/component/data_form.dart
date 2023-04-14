@@ -24,131 +24,13 @@ class DataForm extends StatelessWidget {
     for (FieldModel field in fields) {
       controls[field.columnName] = [model?.getValueFromName(field.columnName)];
     }
-
     final form = fb.group(controls);
-
-    /* final form = fb.group({
-      'INPUT_FID': FormControl<String>(
-        value: model?.getValue(0),
-        disabled: true,
-      ),
-      'EMD_CD': FormControl<String>(
-        value: model?.getValue(1),
-        disabled: true,
-      ),
-      'EMD_NM': FormControl<String>(
-        value: model?.getValue(2),
-        validators: [Validators.required],
-      ),
-      'SGG_OID': FormControl<int>(
-        value: model?.getValue(3),
-        validators: [Validators.required, Validators.number],
-      ),
-      'COL_ADM_SE': FormControl<String>(
-        value: model?.getValue(4),
-        validators: [Validators.required],
-      ),
-      'GID': FormControl<int>(
-        value: model?.getValue(5),
-        validators: [Validators.required, Validators.number],
-      ),
-    });*/
 
     return ReactiveForm(
       formGroup: form,
       child: Column(
-        children: fields.map((field) => renderField(field)).toList(),
-/*        [
-          ReactiveTextField<String>(
-            formControlName: 'INPUT_FID',
-            decoration: InputDecoration(
-              labelText: 'INPUT_FID의 라벨',
-            ),
-          ),
-          const SizedBox(height: 16.0),
-          ReactiveTextField<String>(
-            formControlName: 'EMD_CD',
-            decoration: InputDecoration(
-              labelText: 'EMD_CD의 라벨',
-            ),
-          ),
-          const SizedBox(height: 16.0),
-          ReactiveTextField<String>(
-            formControlName: 'EMD_NM',
-            decoration: InputDecoration(
-              labelText: 'EMD_NM의 라벨',
-            ),
-          ),
-          const SizedBox(height: 16.0),
-          ReactiveTextField<int>(
-            formControlName: 'SGG_OID',
-            decoration: InputDecoration(
-              labelText: 'SGG_OID의 라벨',
-            ),
-          ),
-          const SizedBox(height: 16.0),
-          ReactiveDropdownField<String>(
-            formControlName: 'COL_ADM_SE',
-            decoration: InputDecoration(
-              labelText: 'COL_ADM_SE의 라벨',
-            ),
-            items: const [
-              DropdownMenuItem(
-                value: '50110',
-                child: Text('50110'),
-              ),
-              DropdownMenuItem(
-                value: '50120',
-                child: Text('50120'),
-              ),
-              DropdownMenuItem(
-                value: '50130',
-                child: Text('50130'),
-              ),
-              DropdownMenuItem(
-                value: '50140',
-                child: Text('50140'),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16.0),
-          ReactiveTextField<int>(
-            formControlName: 'GID',
-            decoration: InputDecoration(
-              labelText: 'GID의 라벨',
-            ),
-          ),
-        ],*/
+        children: fields.map((field) => field.renderField()).toList(),
       ),
     );
-  }
-
-  Widget renderField(FieldModel field) {
-    switch (field.controlType) {
-      case ControlType.TextField:
-        return ReactiveTextField(
-          formControlName: field.columnName,
-          decoration: InputDecoration(
-            labelText: field.labelText,
-          ),
-          readOnly: field.readOnly,
-        );
-      case ControlType.DropDown:
-        return ReactiveDropdownField(
-          formControlName: field.columnName,
-          decoration: InputDecoration(
-            labelText: field.labelText,
-          ),
-          items: field.items!,
-        );
-      default:
-        return ReactiveTextField(
-          formControlName: field.columnName,
-          decoration: InputDecoration(
-            labelText: field.labelText,
-          ),
-          readOnly: field.readOnly,
-        );
-    }
   }
 }

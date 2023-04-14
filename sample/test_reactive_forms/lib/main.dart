@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:test_reactive_forms/component/sample_form.dart';
+import 'package:test_reactive_forms/layout/default_layout.dart';
 import 'package:test_reactive_forms/model/emd_model.dart';
 import 'package:test_reactive_forms/screen/home_screen.dart';
 
@@ -12,9 +14,13 @@ void main() async {
   await Hive.openBox<EmdModel>(emdBox);                 // 박스를 열어서 로컬메모리에 저장된 데이터를 읽어옴
 
   runApp(
-     MaterialApp(
+     const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
+      //  home: DefaultLayout(
+      //    title: 'sample form',
+      //    body: SampleForm(),
+      //  ),
     ),
   );
 }
