@@ -45,70 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final valueList = box.values.toList();
 
-    List<FieldModel> emdFields = [];
-    emdFields.addAll({
-      FieldModel(
-        columnName: 'INPUT_FID',
-        labelText: 'ID',
-        controlType: ControlType.TextField,
-        valueType: String,
-        readOnly: true,
-      ),
-      FieldModel(
-        columnName: 'EMD_CD',
-        labelText: '읍면동코드',
-        controlType: ControlType.TextField,
-        valueType: String,
-        readOnly: true,
-      ),
-      FieldModel(
-        columnName: 'EMD_NM',
-        labelText: '음면동명',
-        controlType: ControlType.TextField,
-        valueType: String,
-        readOnly: false,
-      ),
-      FieldModel(
-        columnName: 'SGG_OID',
-        labelText: '시군구일련번호',
-        controlType: ControlType.TextField,
-        valueType: int,
-        readOnly: false,
-      ),
-      FieldModel(
-        columnName: 'COL_ADM_SE',
-        labelText: '시군구코드',
-        controlType: ControlType.DropDown,
-        valueType: String,
-        readOnly: false,
-        items: [
-          const DropdownMenuItem(
-            value: '50110',
-            child: Text('제주시'),
-          ),
-          const DropdownMenuItem(
-            value: '50130',
-            child: Text('서귀포시'),
-          ),
-        ]
-      ),
-      FieldModel(
-        columnName: 'GID',
-        labelText: '공간정보일련번호',
-        controlType: ControlType.TextField,
-        valueType: int,
-        readOnly: true,
-      ),
-
-      FieldModel(
-        columnName: 'check',
-        labelText: '체크박스',
-        controlType: ControlType.CheckBox,
-        valueType: bool,
-        readOnly: false,
-      )
-    });
-
     return DefaultLayout(
       title: 'Home Screen',
       body: GridView.count(
@@ -122,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (_) =>
-                          DetailScreen(fields: emdFields, fid: emd.input_fid),
+                          DetailScreen(fid: emd.input_fid),
                     ),
                   );
                 },

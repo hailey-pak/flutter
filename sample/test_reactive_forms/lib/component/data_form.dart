@@ -29,8 +29,27 @@ class DataForm extends StatelessWidget {
     return ReactiveForm(
       formGroup: form,
       child: Column(
-        children: fields.map((field) => field.renderField()).toList(),
+        children: renderWidgets(),
       ),
     );
+  }
+
+  List<Widget> renderWidgets() {
+    List<Widget> list = fields.map((field) => field.renderField()).toList();
+    list.add(
+      ReactiveFormConsumer(
+        builder: (context, form, child) {
+          return ElevatedButton(
+            onPressed: () {
+              if (form.valid) {
+                print(form.value);
+              }
+            },
+            child: const Text('저장'),
+          );
+        },
+      ),
+    );
+    return list;
   }
 }
