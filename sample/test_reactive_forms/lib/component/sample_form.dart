@@ -15,7 +15,7 @@ class SampleForm extends StatelessWidget {
         disabled: true,
       ),
       'name': FormControl<String>(
-        validators: [Validators.required],
+        validators: [Validators.required, Validators.number],
       ),
       'date': FormControl<DateTime>(
         value: DateTime.now(), //이전 값이 존재 하지 않으면 현재 날짜

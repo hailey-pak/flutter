@@ -1,22 +1,34 @@
 import 'package:hive/hive.dart';
-import 'package:reactive_forms/reactive_forms.dart';
-import 'package:reactive_forms/src/models/models.dart';
+import 'package:test_reactive_forms/model/column_def_model.dart';
 import 'package:test_reactive_forms/model/field_model.dart';
 
 import 'data_model.dart';
 
+part 'base_map_model.g.dart';
 
+@HiveType(typeId: 101)
 class BaseMapModel implements IDataModel {
+  @HiveField(0)
   final String ueepnu;
+  @HiveField(1)
   final double gakuka;
+  @HiveField(2)
   final int gimok;
+  @HiveField(3)
   final int giyuk;
-  final int dist;
-  final int gita;
+  @HiveField(4)
+  final int? dist;
+  @HiveField(5)
+  final int? gita;
+  @HiveField(6)
   final int yongdo;
+  @HiveField(7)
   final double area;
+  @HiveField(8)
   final String jibun;
+  @HiveField(9)
   final double shape_leng;
+  @HiveField(10)
   final double shape_area;
 
   BaseMapModel({
@@ -24,44 +36,113 @@ class BaseMapModel implements IDataModel {
     required this.gakuka,
     required this.gimok,
     required this.giyuk,
-    required this.dist,
-    required this.gita,
+    this.dist,
+    this.gita,
     required this.yongdo,
     required this.area,
     required this.jibun,
     required this.shape_leng,
     required this.shape_area,
-});
+  });
 
+  BaseMapModel.fromJson(Map<String, dynamic> json)
+      : ueepnu = json['UEEPNU'],
+        gakuka = json['GAKUKA'],
+        gimok = json['GIMOK'],
+        giyuk = json['GIYUK'],
+        dist = json['DIST'],
+        gita = json['GITA'],
+        yongdo = json['YONGDO'],
+        area = json['AREA'],
+        jibun = json['JIBUN'],
+        shape_leng = json['SHAPE_LENG'],
+        shape_area = json['SHAPE_AREA'];
 
-  @override
-  List<FieldModel> _fields = [];
+  Map<String, dynamic> toJson() =>
+      {
+        'UEEPNU': ueepnu,
+        'GAKUKA': gakuka,
+        'GIMOK': gimok,
+        'GIYUK': giyuk,
+        'DIST': dist,
+        'GITA': gita,
+        'YONGDO': yongdo,
+        'AREA': area,
+        'JIBUN': jibun,
+        'SHAPE_LENG': shape_leng,
+        'SHAPE_AREA': shape_area,
+      };
+
+  List<FieldModel> _controls = [];
 
   @override
   String getKey() {
     return ueepnu;
   }
 
-  // @override
-  // void initField(List<FieldModel> fields) {
-  //   Map<String, Object> controls = {};
-  //   for (FieldModel field in fields) {
-  //     controls[field.columnName] = ['', ];
-  //   }
-  // }
-
-
   @override
-  void initControls() {
-    // TODO: implement initControls
+  void initFields() {
+    _controls.add(
+      FieldModel(
+        column: ColumnDefinitionModel(
+          tableId: 'BASEMAP',
+          columnName: 'UEEPNU',
+          labelText: 'PNU',
+          valueType: 'STRING',
+          readOnly: true,
+        ),
+        type: ControlType.TextField,
+      ),
+    );
+    _controls.add(
+      FieldModel(
+        column: ColumnDefinitionModel(
+          tableId: 'BASEMAP',
+          columnName: 'GIMOK',
+          labelText: '지목',
+          valueType: 'INT',
+          readOnly: false,
+          codeId: 'GIMOK'
+        ),
+        type: ControlType.DropDown,
+      ),
+    );
+    _controls.add(
+      FieldModel(
+        column: ColumnDefinitionModel(
+          tableId: 'BASEMAP',
+          columnName: 'YONGDO',
+          labelText: '용도',
+          valueType: 'INT',
+          readOnly: false,
+        ),
+        type: ControlType.TextField,
+      ),
+    );
+    _controls.add(
+      FieldModel(
+        column: ColumnDefinitionModel(
+          tableId: 'BASEMAP',
+          columnName: 'JIBUN',
+          labelText: '지번',
+          valueType: 'STRING',
+          readOnly: false,
+        ),
+        type: ControlType.TextField,
+      ),
+    );
   }
 
-
   @override
-  FormGroup getFormGroup() {
-    throw UnimplementedError();
+  List<FieldModel> getFields() {
+    if (_controls.isEmpty) {
+      initFields();
+    }
+    return _controls;
   }
 
-
-
+  @override
+  dynamic getValue(String colName) {
+    return toJson()[colName];
+  }
 }

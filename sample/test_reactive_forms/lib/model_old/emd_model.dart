@@ -2,7 +2,7 @@ import 'package:hive/hive.dart';
 
 part 'emd_model.g.dart';
 
-@HiveType(typeId: 0)
+@HiveType(typeId: 100)
 class EmdModel {
   @HiveField(0)
   final String input_fid;

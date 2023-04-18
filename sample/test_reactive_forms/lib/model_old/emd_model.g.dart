@@ -8,7 +8,7 @@ part of 'emd_model.dart';
 
 class EmdModelAdapter extends TypeAdapter<EmdModel> {
   @override
-  final int typeId = 0;
+  final int typeId = 100;
 
   @override
   EmdModel read(BinaryReader reader) {

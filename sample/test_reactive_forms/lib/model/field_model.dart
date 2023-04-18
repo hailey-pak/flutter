@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:test_reactive_forms/main.dart';
+import 'package:test_reactive_forms/model/code_model.dart';
+import 'package:test_reactive_forms/model/column_def_model.dart';
 
 enum ControlType {
   TextField,
@@ -13,77 +17,69 @@ enum ControlType {
 }
 
 class FieldModel {
-  final String columnName;
-  final String labelText;
-  final ControlType controlType;
-  final Type valueType;
-  final bool readOnly;
-
-  List<DropdownMenuItem>? items; // dropdown 컨트롤에 설정할 메뉴 아이템 리스트
-  dynamic value; //
-  DateTime? firstDate;
-  DateTime? lastDate;
+  final ColumnDefinitionModel column;
+  final ControlType type;
+  final Map<Validators, String>? validations;
 
   FieldModel({
-    required this.columnName,
-    required this.labelText,
-    required this.controlType,
-    required this.valueType,
-    required this.readOnly,
-    this.items,
-    this.firstDate,
-    this.lastDate,
+    required this.column,
+    required this.type,
+    this.validations,
   });
 
   Widget renderField() {
-    switch (controlType) {
+    switch (type) {
       case ControlType.TextField:
         return ReactiveTextField(
-          formControlName: columnName,
+          formControlName: column.columnName,
           decoration: InputDecoration(
-            labelText: labelText,
+            labelText: column.labelText,
           ),
-          readOnly: readOnly,
+          readOnly: column.readOnly,
         );
 
       case ControlType.DropDown:
+        String codeId = column.codeId!;
+        final box = Hive.box(codeBox);
+        final List<CodeModel> codeList = List<CodeModel>.from(box.get(codeId));
+
         return ReactiveDropdownField(
-          formControlName: columnName,
+          formControlName: column.columnName,
           decoration: InputDecoration(
-            labelText: labelText,
+            labelText: column.labelText,
           ),
-          items: items!,
+          items: makeDropMenuItems(codeList),
         );
 
-      case ControlType.Radio:
-        return ReactiveRadioListTile(
-          formControlName: columnName,
-          value: value,
-          title: Text(labelText),
-        );
+      // case ControlType.Radio:
+      //   return ReactiveRadioListTile(
+      //     formControlName: column.columnName,
+      //     value: value,
+      //     title: Text(column.labelText),
+      //   );
 
       case ControlType.CheckBox:
         return ReactiveCheckboxListTile(
-          formControlName: columnName,
-          title: Text(labelText),
+          formControlName: column.columnName,
+          title: Text(column.labelText),
         );
 
       case ControlType.Switch:
         return ReactiveSwitchListTile(
-          formControlName: columnName,
-          title: Text(labelText),
+          formControlName: column.columnName,
+          title: Text(column.labelText),
         );
 
       case ControlType.DatePicker:
         return ReactiveTextField(
-          formControlName: columnName,
+          formControlName: column.columnName,
           readOnly: true,
           decoration: InputDecoration(
-            labelText: labelText,
+            labelText: column.labelText,
             suffixIcon: ReactiveDatePicker<DateTime>(
-              formControlName: columnName,
-              firstDate: firstDate ?? DateTime(1985),
-              lastDate: lastDate ?? DateTime(DateTime.now().year + 10),
+              formControlName: column.columnName,
+              firstDate: column.firstDate ?? DateTime(1985),
+              lastDate: column.lastDate ?? DateTime(DateTime.now().year + 10),
               builder: (context, picker, child) {
                 return IconButton(
                   onPressed: picker.showPicker,
@@ -96,12 +92,12 @@ class FieldModel {
 
       case ControlType.TimePicker:
         return ReactiveTextField(
-          formControlName: columnName,
+          formControlName: column.columnName,
           readOnly: true,
           decoration: InputDecoration(
-              labelText: labelText,
+              labelText: column.labelText,
               suffixIcon: ReactiveTimePicker(
-                formControlName: columnName,
+                formControlName: column.columnName,
                 builder: (context, picker, child) {
                   return IconButton(
                     onPressed: picker.showPicker,
@@ -113,12 +109,23 @@ class FieldModel {
 
       default:
         return ReactiveTextField(
-          formControlName: columnName,
+          formControlName: column.columnName,
           decoration: InputDecoration(
-            labelText: labelText,
+            labelText: column.labelText,
           ),
-          readOnly: readOnly,
+          readOnly: column.readOnly,
         );
     }
   }
+
+
+  List<DropdownMenuItem> makeDropMenuItems(List<CodeModel> codeList) {
+    return codeList.map((e) =>
+        DropdownMenuItem(
+          value: e.code,
+          child: Text(e.name),
+        ),
+    ).toList();
+  }
+
 }

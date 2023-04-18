@@ -1,0 +1,112 @@
+[
+  {
+    "TABLEID": "BASEMAP",
+    "COLUMNNAME": "UEEPNU",
+    "LABELTEXT": "PNU",
+    "VALUETYPE": "STRING",
+    "READONLY": true,
+    "CODEID": null,
+    "FIRSTDATE": null,
+    "LASTDATE": null
+  },
+  {
+    "TABLEID": "BASEMAP",
+    "COLUMNNAME": "GAKUKA",
+    "LABELTEXT": "GAKUKA",
+    "VALUETYPE": "DOUBLE",
+    "READONLY": true,
+    "CODEID": null,
+    "FIRSTDATE": null,
+    "LASTDATE": null
+  },
+  {
+    "TABLEID": "BASEMAP",
+    "COLUMNNAME": "GIMOK",
+    "LABELTEXT": "지목",
+    "VALUETYPE": "INT",
+    "READONLY": false,
+    "CODEID": "GIMOK",
+    "FIRSTDATE": null,
+    "LASTDATE": null
+  },
+  {
+    "TABLEID": "BASEMAP",
+    "COLUMNNAME": "GIYUK",
+    "LABELTEXT": "지역",
+    "VALUETYPE": "INT",
+    "READONLY": false,
+    "CODEID": null,
+    "FIRSTDATE": null,
+    "LASTDATE": null
+  },
+  {
+    "TABLEID": "BASEMAP",
+    "COLUMNNAME": "DIST",
+    "LABELTEXT": "거리",
+    "VALUETYPE": "INT",
+    "READONLY": false,
+    "CODEID": null,
+    "FIRSTDATE": null,
+    "LASTDATE": null
+  },
+  {
+    "TABLEID": "BASEMAP",
+    "COLUMNNAME": "GITA",
+    "LABELTEXT": "기타",
+    "VALUETYPE": "INT",
+    "READONLY": false,
+    "CODEID": null,
+    "FIRSTDATE": null,
+    "LASTDATE": null
+  },
+  {
+    "TABLEID": "BASEMAP",
+    "COLUMNNAME": "YONGDO",
+    "LABELTEXT": "용도",
+    "VALUETYPE": "INT",
+    "READONLY": false,
+    "CODEID": "YONGDO",
+    "FIRSTDATE": null,
+    "LASTDATE": null
+  },
+  {
+    "TABLEID": "BASEMAP",
+    "COLUMNNAME": "AREA",
+    "LABELTEXT": "AREA",
+    "VALUETYPE": "DOUBLE",
+    "READONLY": false,
+    "CODEID": null,
+    "FIRSTDATE": null,
+    "LASTDATE": null
+  },
+  {
+    "TABLEID": "BASEMAP",
+    "COLUMNNAME": "JIBUN",
+    "LABELTEXT": "지번",
+    "VALUETYPE": "STRING",
+    "READONLY": true,
+    "CODEID": null,
+    "FIRSTDATE": null,
+    "LASTDATE": null
+  },
+  {
+    "TABLEID": "BASEMAP",
+    "COLUMNNAME": "SHAPE_LENG",
+    "LABELTEXT": "너비",
+    "VALUETYPE": "DOUBLE",
+    "READONLY": true,
+    "CODEID": null,
+    "FIRSTDATE": null,
+    "LASTDATE": null
+  },
+  {
+    "TABLEID": "BASEMAP",
+    "COLUMNNAME": "SHAPE_AREA",
+    "LABELTEXT": "면적",
+    "VALUETYPE": "DOUBLE",
+    "READONLY": true,
+    "CODEID": null,
+    "FIRSTDATE": null,
+    "LASTDATE": null
+  }
+]
