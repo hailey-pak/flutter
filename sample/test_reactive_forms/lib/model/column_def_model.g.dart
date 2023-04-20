@@ -20,18 +20,19 @@ class ColumnDefinitionModelAdapter extends TypeAdapter<ColumnDefinitionModel> {
       tableId: fields[0] as String,
       columnName: fields[1] as String,
       labelText: fields[2] as String,
-      valueType: fields[3] as String,
-      readOnly: fields[4] as bool,
-      codeId: fields[5] as String?,
-      firstDate: fields[6] as DateTime?,
-      lastDate: fields[7] as DateTime?,
+      fieldType: fields[3] as int,
+      required: fields[4] as bool,
+      readOnly: fields[5] as bool,
+      codeId: fields[6] as String?,
+      firstDate: fields[7] as DateTime?,
+      lastDate: fields[8] as DateTime?,
     );
   }
 
   @override
   void write(BinaryWriter writer, ColumnDefinitionModel obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.tableId)
       ..writeByte(1)
@@ -39,14 +40,16 @@ class ColumnDefinitionModelAdapter extends TypeAdapter<ColumnDefinitionModel> {
       ..writeByte(2)
       ..write(obj.labelText)
       ..writeByte(3)
-      ..write(obj.valueType)
+      ..write(obj.fieldType)
       ..writeByte(4)
-      ..write(obj.readOnly)
+      ..write(obj.required)
       ..writeByte(5)
-      ..write(obj.codeId)
+      ..write(obj.readOnly)
       ..writeByte(6)
-      ..write(obj.firstDate)
+      ..write(obj.codeId)
       ..writeByte(7)
+      ..write(obj.firstDate)
+      ..writeByte(8)
       ..write(obj.lastDate);
   }
 

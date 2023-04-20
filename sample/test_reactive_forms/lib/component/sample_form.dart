@@ -46,6 +46,9 @@ class SampleForm extends StatelessWidget {
               decoration: InputDecoration(
                 labelText: '관리번호',
               ),
+              validationMessages: {
+                ValidationMessage.required: (error) => '필수로 입력해주세요.',
+              },
             ),
             const SizedBox(height: 16.0),
             ReactiveTextField(

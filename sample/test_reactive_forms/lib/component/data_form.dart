@@ -16,12 +16,20 @@ class DataForm extends StatelessWidget {
     final List<FieldModel> fieldModels = dataModel.getFields();
 
     // 폼 그룹 생성
-    Map<String, Object> controls = {};
+    // Map<String, Object> controls = {};
+    // for (FieldModel field in fieldModels) {
+    //   String colName = field.column.columnName;
+    //   controls[colName] = [dataModel.getValue(colName)];
+    // }
+
+    // final form = fb.group(controls);
+
+    Map<String, AbstractControl<dynamic>> controls = {};
     for (FieldModel field in fieldModels) {
-      String colName = field.column.columnName;
-      controls[colName] = [dataModel.getValue(colName)];
+        String colName = field.column.columnName;
+        controls[colName] = field.getFormControl(initialValue: dataModel.getValue(colName));
     }
-    final form = fb.group(controls);
+    final FormGroup form = FormGroup(controls);
 
     return ReactiveForm(
       formGroup: form,

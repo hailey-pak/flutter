@@ -58,8 +58,7 @@ class BaseMapModel implements IDataModel {
         shape_leng = json['SHAPE_LENG'],
         shape_area = json['SHAPE_AREA'];
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         'UEEPNU': ueepnu,
         'GAKUKA': gakuka,
         'GIMOK': gimok,
@@ -88,23 +87,22 @@ class BaseMapModel implements IDataModel {
           tableId: 'BASEMAP',
           columnName: 'UEEPNU',
           labelText: 'PNU',
-          valueType: 'STRING',
+          fieldType: 0,
+          required: true,
           readOnly: true,
         ),
-        type: ControlType.TextField,
       ),
     );
     _controls.add(
       FieldModel(
         column: ColumnDefinitionModel(
-          tableId: 'BASEMAP',
-          columnName: 'GIMOK',
-          labelText: '지목',
-          valueType: 'INT',
-          readOnly: false,
-          codeId: 'GIMOK'
-        ),
-        type: ControlType.DropDown,
+            tableId: 'BASEMAP',
+            columnName: 'GIMOK',
+            labelText: '지목',
+            fieldType: 2,
+            required: true,
+            readOnly: false,
+            codeId: 'GIMOK'),
       ),
     );
     _controls.add(
@@ -113,10 +111,10 @@ class BaseMapModel implements IDataModel {
           tableId: 'BASEMAP',
           columnName: 'YONGDO',
           labelText: '용도',
-          valueType: 'INT',
+          fieldType: 1,
+          required: true,
           readOnly: false,
         ),
-        type: ControlType.TextField,
       ),
     );
     _controls.add(
@@ -125,10 +123,10 @@ class BaseMapModel implements IDataModel {
           tableId: 'BASEMAP',
           columnName: 'JIBUN',
           labelText: '지번',
-          valueType: 'STRING',
+          fieldType: 0,
+          required: true,
           readOnly: false,
         ),
-        type: ControlType.TextField,
       ),
     );
   }

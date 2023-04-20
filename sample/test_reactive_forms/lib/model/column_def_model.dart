@@ -12,22 +12,25 @@ class ColumnDefinitionModel {
   @HiveField(2)
   final String labelText;
   @HiveField(3)
-  final String valueType;
+  final int fieldType;
   @HiveField(4)
+  final bool required;
+  @HiveField(5)
   final bool readOnly;
 
-  @HiveField(5)
-  String? codeId;
   @HiveField(6)
-  DateTime? firstDate;
+  String? codeId;
   @HiveField(7)
+  DateTime? firstDate;
+  @HiveField(8)
   DateTime? lastDate;
 
   ColumnDefinitionModel({
     required this.tableId,
     required this.columnName,
     required this.labelText,
-    required this.valueType,
+    required this.fieldType,
+    required this.required,
     required this.readOnly,
     this.codeId,
     this.firstDate,
