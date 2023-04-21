@@ -15,43 +15,65 @@ class FieldModel {
 
   FieldModel({
     required this.column,
-    this.validators,
-    this.validationMessages,
-    this.asyncValidators,
-  });
-
-
-  FormControl getFormControl({
-    required dynamic initialValue,
+    List<ValidatorFunction>? validators,
+    Map<String, ValidationMessageFunction>? validationMessages,
+    List<AsyncValidatorFunction>? asyncValidators,
   }) {
-    validators ??= [];
-    asyncValidators ??= [];
+    this.validators =  validators ??= [];
+    this.validationMessages = validationMessages ??= {};
+    this.asyncValidators = asyncValidators ??= [];
 
     // required 조건 추가
     if (column.required) {
-      validators!.add(Validators.required);
-    }
+      this.validators!.add(Validators.required);
 
-    return FormControl(
-      value: initialValue,
-      validators: validators!,
-      asyncValidators: asyncValidators!,
-    );
-  }
-
-  Widget renderField() {
-    validationMessages ??= {};
-
-    // required 조건 추가
-    if (column.required) {
-      validationMessages!.putIfAbsent(
+      this.validationMessages!.putIfAbsent(
         ValidationMessage.required,
-            () {
+        () {
           return (error) => '필수로 입력해주세요.';
         },
       );
     }
+  }
 
+  FormControl getFormControl({
+    required dynamic initialValue,
+  }) {
+    FormControl formControl;
+
+    Type type = column.valueType;
+    switch (type) {
+      case String:
+        formControl = FormControl<String>();
+        break;
+      case int:
+        formControl = FormControl<int>();
+        break;
+      case double:
+        formControl = FormControl<double>();
+        break;
+      case bool:
+        formControl = FormControl<bool>();
+        break;
+      case DateTime:
+        formControl = FormControl<DateTime>();
+        break;
+      case TimeOfDay:
+        formControl = FormControl<TimeOfDay>();
+        break;
+      default:
+        formControl = FormControl<Object>();
+        break;
+    }
+
+    formControl.value = initialValue;
+    formControl.setValidators(validators!);
+    formControl.setAsyncValidators(asyncValidators!);
+
+    return formControl;
+  }
+
+  Widget renderField() {
     FieldType type = FieldType.getByCode(column.fieldType);
 
     switch (type) {
@@ -68,7 +90,7 @@ class FieldModel {
       case FieldType.numberTextField:
         validationMessages!.putIfAbsent(
           ValidationMessage.number,
-              () {
+          () {
             return (error) => '숫자만 입력할 수 있습니다.';
           },
         );
@@ -85,7 +107,7 @@ class FieldModel {
         );
 
       case FieldType.dropDown:
-      // 드롭다운 메뉴에 들어갈 값 리스트
+        // 드롭다운 메뉴에 들어갈 값 리스트
         List<CodeModel> codeList = [];
         if (column.codeId != null) {
           String codeId = column.codeId!;
@@ -129,9 +151,7 @@ class FieldModel {
             suffixIcon: ReactiveDatePicker<DateTime>(
               formControlName: column.columnName,
               firstDate: column.firstDate ?? DateTime(1985),
-              lastDate: column.lastDate ?? DateTime(DateTime
-                  .now()
-                  .year + 10),
+              lastDate: column.lastDate ?? DateTime(DateTime.now().year + 10),
               builder: (context, picker, child) {
                 return IconButton(
                   onPressed: picker.showPicker,
@@ -174,12 +194,11 @@ class FieldModel {
   List<DropdownMenuItem> makeDropMenuItems(List<CodeModel> codeList) {
     return codeList
         .map(
-          (e) =>
-          DropdownMenuItem(
+          (e) => DropdownMenuItem(
             value: e.code,
             child: Text(e.name),
           ),
-    )
+        )
         .toList();
   }
 }

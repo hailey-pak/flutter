@@ -19,7 +19,13 @@ class DataForm extends StatelessWidget {
     // Map<String, Object> controls = {};
     // for (FieldModel field in fieldModels) {
     //   String colName = field.column.columnName;
-    //   controls[colName] = [dataModel.getValue(colName)];
+    //
+    //   if (field.validators == null) {
+    //     controls[colName] = [dataModel.getValue(colName)];
+    //   } else {
+    //     controls[colName] = [dataModel.getValue(colName), field.validators];
+    //   }
+    //
     // }
 
     // final form = fb.group(controls);
