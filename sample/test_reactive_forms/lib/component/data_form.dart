@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:reactive_image_picker/reactive_image_picker.dart';
 import 'package:test_reactive_forms/model/field_model.dart';
 import 'package:test_reactive_forms/model/data_model.dart';
 
@@ -16,20 +17,6 @@ class DataForm extends StatelessWidget {
     final List<FieldModel> fieldModels = dataModel.getFields();
 
     // 폼 그룹 생성
-    // Map<String, Object> controls = {};
-    // for (FieldModel field in fieldModels) {
-    //   String colName = field.column.columnName;
-    //
-    //   if (field.validators == null) {
-    //     controls[colName] = [dataModel.getValue(colName)];
-    //   } else {
-    //     controls[colName] = [dataModel.getValue(colName), field.validators];
-    //   }
-    //
-    // }
-
-    // final form = fb.group(controls);
-
     Map<String, AbstractControl<dynamic>> controls = {};
     for (FieldModel field in fieldModels) {
         String colName = field.column.columnName;
