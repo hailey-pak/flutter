@@ -42,6 +42,7 @@ dependencies:
   hive_flutter: ^1.1.0
   path_provider: ^2.0.14
   json_annotation: ^4.8.0
+  reactive_multi_image_picker: ^0.9.0
 
 
 dev_dependencies:

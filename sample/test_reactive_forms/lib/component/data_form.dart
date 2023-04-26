@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
-import 'package:reactive_image_picker/reactive_image_picker.dart';
-import 'package:test_reactive_forms/model/field_model.dart';
 import 'package:test_reactive_forms/model/data_model.dart';
+import 'package:test_reactive_forms/model/field_model.dart';
 
 class DataForm extends StatelessWidget {
   final IDataModel dataModel;
@@ -43,6 +42,8 @@ class DataForm extends StatelessWidget {
             onPressed: () {
               if (form.valid) {
                 print(form.value);
+
+
               }
             },
             child: const Text('저장'),

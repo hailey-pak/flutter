@@ -480,6 +480,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
+  multi_image_picker:
+    dependency: transitive
+    description:
+      name: multi_image_picker
+      sha256: "3071bef51d4165f152bde7e22b6f6769745acd5939d70b9fc3d0c9137dbd0a15"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.8.01"
   package_config:
     dependency: transitive
     description:
@@ -632,6 +640,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
+  reactive_multi_image_picker:
+    dependency: "direct main"
+    description:
+      name: reactive_multi_image_picker
+      sha256: "8969958f524b51a9bea2e1cb07e987120d8b3324904ff94a9532346f1c6a2c79"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.0"
   reactive_signature:
     dependency: "direct main"
     description:

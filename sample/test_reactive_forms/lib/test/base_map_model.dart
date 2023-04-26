@@ -1,8 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:test_reactive_forms/model/column_def_model.dart';
+import 'package:test_reactive_forms/model/data_model.dart';
 import 'package:test_reactive_forms/model/field_model.dart';
-
-import 'data_model.dart';
 
 part 'base_map_model.g.dart';
 
@@ -147,4 +146,8 @@ class BaseMapModel implements IDataModel {
   dynamic getValue(String colName) {
     return toJson()[colName];
   }
+
+
+
+
 }

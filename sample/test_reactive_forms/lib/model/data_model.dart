@@ -7,4 +7,6 @@ abstract class IDataModel {
   void initFields();
   List<FieldModel> getFields();
   dynamic getValue(String colName);
+
+
 }
