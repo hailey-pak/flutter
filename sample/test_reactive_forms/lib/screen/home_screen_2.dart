@@ -18,8 +18,6 @@ class HomeScreen2 extends StatefulWidget {
 class _HomeScreen2State extends State<HomeScreen2> {
   @override
   Widget build(BuildContext context) {
-    final Box box = Hive.box(dataBox);
-    final List<dynamic> keys = box.keys.toList();
 
     return DefaultLayout(
       title: 'Home Screen',

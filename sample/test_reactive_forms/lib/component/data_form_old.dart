@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:test_reactive_forms/main.dart';
-import 'package:test_reactive_forms/model_old/emd_model.dart';
+import 'package:test_reactive_forms/test/emd_model.dart';
 import 'package:test_reactive_forms/model_old/field_model.dart';
 
 class DataFormOld extends StatelessWidget {
