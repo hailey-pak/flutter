@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:reactive_image_picker/image_file.dart';
 import 'package:reactive_image_picker/reactive_image_picker.dart';
@@ -14,6 +15,22 @@ class HomeScreen2 extends StatefulWidget {
 }
 
 class _HomeScreen2State extends State<HomeScreen2> {
+
+  @override
+  void initState() {
+    super.initState();
+    getPermission();
+  }
+
+  getPermission() async {
+    Map<Permission, PermissionStatus> statuses = await [
+      Permission.camera,
+      Permission.storage,
+      Permission.microphone,
+      Permission.videos,
+    ].request();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultLayout(
