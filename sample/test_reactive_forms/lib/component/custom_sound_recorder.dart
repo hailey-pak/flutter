@@ -97,14 +97,14 @@ class _CustomSoundRecorderState extends State<CustomSoundRecorder> {
   Future<void> openTheRecorder() async {
     if (!kIsWeb) {
       Map<Permission, PermissionStatus> permissions = await [
-        Permission.storage,
+        Permission.manageExternalStorage,
         Permission.microphone,
       ].request();
 
       if (permissions[Permission.microphone] != PermissionStatus.granted) {
         throw RecordingPermissionException('Microphone permission not granted');
       }
-      if (permissions[Permission.storage] != PermissionStatus.granted) {
+      if (permissions[Permission.manageExternalStorage] != PermissionStatus.granted) {
         throw RecordingPermissionException('Storage permission not granted');
       }
     }
@@ -226,12 +226,13 @@ class _CustomSoundRecorderState extends State<CustomSoundRecorder> {
       path = '_flutter_sound${ext[_codec.index]}';
     }
 
-    _mRecorder
+    await _mRecorder
         .startRecorder(
       toFile: path,
       codec: _codec,
       audioSource: theSource,
     );
+    _mRecorder.logger.d('startRecorder');
 
     _recorderSubscription = _mRecorder.onProgress!.listen((e) {
       var date = DateTime.fromMillisecondsSinceEpoch(

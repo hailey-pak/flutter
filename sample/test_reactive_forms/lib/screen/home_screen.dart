@@ -28,16 +28,21 @@ class _HomeScreenState extends State<HomeScreen> {
             .map(
               (key) {
                 BaseMapModel dataModel = box.get(key);
-                return ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (_) =>
-                            DetailScreen(fid: key),
-                      ),
-                    );
-                  },
-                  child: Text(dataModel.jibun),
+                return Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) =>
+                              DetailScreen(fid: key),
+                        ),
+                      );
+                    },
+                    child: Text(dataModel.jibun),
+                  ),
                 );
               },
             )

@@ -48,6 +48,7 @@ dependencies:
   flutter_sound: ^9.2.13
   audio_session: ^0.1.13
   intl: ^0.18.1
+  social_media_recorder: ^0.1.86
 
 dev_dependencies:
   flutter_test:
