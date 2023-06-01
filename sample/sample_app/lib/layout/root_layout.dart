@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sample_app/const/colors.dart';
 import 'package:sample_app/screen/ar_screen.dart';
 import 'package:sample_app/screen/map_screen.dart';
 import 'package:sample_app/screen/qr_screen.dart';
@@ -24,7 +26,8 @@ class RootLayout extends StatefulWidget {
   State<RootLayout> createState() => _RootLayoutState();
 }
 
-class _RootLayoutState extends State<RootLayout> with SingleTickerProviderStateMixin {
+class _RootLayoutState extends State<RootLayout>
+    with SingleTickerProviderStateMixin {
   late TabController controller;
   int selectedIndex = 0;
   late String _title;
@@ -32,7 +35,10 @@ class _RootLayoutState extends State<RootLayout> with SingleTickerProviderStateM
   final List<Option> options = [
     Option(name: '지도', icon: Icons.map, widget: const MapScreen()),
     Option(name: '검색', icon: Icons.search, widget: const SearchScreen()),
-    Option(name: '일정', icon: Icons.calendar_today_sharp, widget: const ScheduleScreen()),
+    Option(
+        name: '일정',
+        icon: Icons.calendar_today_sharp,
+        widget: const ScheduleScreen()),
     Option(name: 'QR', icon: Icons.qr_code, widget: const QRScreen()),
     Option(name: 'AR', icon: Icons.camera, widget: const ARScreen()),
   ];
@@ -57,10 +63,12 @@ class _RootLayoutState extends State<RootLayout> with SingleTickerProviderStateM
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: renderAppBar(),
-      body: TabBarView(
-        physics: const NeverScrollableScrollPhysics(),
-        controller: controller,
-        children: options.map((e) => e.widget).toList(),
+      body: SafeArea(
+        child: TabBarView(
+          physics: const NeverScrollableScrollPhysics(),
+          controller: controller,
+          children: options.map((e) => e.widget).toList(),
+        ),
       ),
       bottomNavigationBar: renderNavigationBar(),
     );
@@ -75,6 +83,8 @@ class _RootLayoutState extends State<RootLayout> with SingleTickerProviderStateM
           fontWeight: FontWeight.w700,
         ),
       ),
+      backgroundColor: PRIMARY_COLOR,
+      automaticallyImplyLeading: false,   //뒤로가기 버튼 제거
       actions: [
         IconButton(
           onPressed: () {},
@@ -90,16 +100,14 @@ class _RootLayoutState extends State<RootLayout> with SingleTickerProviderStateM
 
   BottomNavigationBar renderNavigationBar() {
     return BottomNavigationBar(
-      currentIndex: selectedIndex,
       onTap: (index) => controller.animateTo(index),
+      currentIndex: selectedIndex,
       type: BottomNavigationBarType.fixed,
-      fixedColor: Colors.pink,
-      // selectedFontSize: 48.sp,
-      unselectedItemColor: Theme.of(context).primaryColor,
-      // unselectedFontSize: 48.sp,
-      showUnselectedLabels: true,
+      selectedItemColor: Colors.white,
+      unselectedItemColor: PRIMARY_COLOR,
       items: options
-          .map((e) => renderNavigationBarItem(icon: e.icon, label: e.name))
+          .map((e) => renderNavigationBarItem(
+              icon: e.icon, label: e.name, index: options.indexOf(e)))
           .toList(),
     );
   }
@@ -107,12 +115,34 @@ class _RootLayoutState extends State<RootLayout> with SingleTickerProviderStateM
   BottomNavigationBarItem renderNavigationBarItem({
     required IconData icon,
     required String label,
+    required int index,
   }) {
     return BottomNavigationBarItem(
-      icon: Icon(
-        icon,
+      icon: Container(
+        width: double.infinity,
+        height: kBottomNavigationBarHeight + 8.0,
+        color: selectedIndex == index ? PRIMARY_COLOR : Colors.white,
+        padding: const EdgeInsets.symmetric(vertical: 4.0),
+        child: InkWell(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                icon,
+                color: selectedIndex == index ? Colors.white : PRIMARY_COLOR,
+              ),
+              Text(
+                label,
+                style: TextStyle(
+                    color:
+                        selectedIndex == index ? Colors.white : PRIMARY_COLOR),
+              ),
+            ],
+          ),
+        ),
       ),
-      label: label,
+      label: '',
+      // label: label,
     );
   }
 }
