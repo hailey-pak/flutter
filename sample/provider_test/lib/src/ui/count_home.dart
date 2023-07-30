@@ -7,7 +7,6 @@ class CountHomeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('build called');
     return Center(
       child: Consumer<CountProvider>(
         builder: (context, value, child) {
