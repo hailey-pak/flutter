@@ -88,3 +88,13 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  fonts:
+    - family: KoPubBatang
+      fonts:
+        - asset: assets/fonts/KoPubBatangBold.ttf
+          weight: 700
+        - asset: assets/fonts/KoPubBatangLight.ttf
+          weight: 300
+        - asset: assets/fonts/KoPubBatangMedium.ttf
+          weight: 500
