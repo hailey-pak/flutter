@@ -12,19 +12,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-
-        fontFamily: 'KoPubBatang',
-
         textTheme: const TextTheme(
-          displayLarge: TextStyle(
-            color: Colors.black,
-            fontSize: 40,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 5,
-          ),
-        ),
+            displayLarge: TextStyle(fontSize: 50, fontFamily: 'KoPubBatang')),
       ),
-      home: AppBarScreen(),
+      home: const AppBarScreen(),
     );
   }
 }
@@ -55,9 +46,12 @@ class AppBarScreen extends StatelessWidget {
               'displaySmall',
               style: Theme.of(context).textTheme.displaySmall,
             ),
-            Text(
+            const Text(
               'headlineLarge',
-              style: Theme.of(context).textTheme.headlineLarge,
+              style: TextStyle(
+                fontSize: 20.0,
+                fontFamily: 'KoPubBatang',
+              ),
             ),
             Text(
               'headlineMedium',
