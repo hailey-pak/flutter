@@ -15,21 +15,13 @@ class MyApp extends StatelessWidget {
         appBarTheme: const AppBarTheme(
           centerTitle: true,
         ),
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.purpleAccent,
           size: 100.0,
           fill: 0.0,
           grade: 10,
           weight: 10.0,
           opacity: 1.0,
-        ),
-        iconButtonTheme: IconButtonThemeData(
-          style: ButtonStyle(
-
-          ),
-        ),
-        actionIconTheme: ActionIconThemeData(
-
         ),
       ),
       home: AppBarScreen(),
