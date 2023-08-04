@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
             iconSize: 30,
           ),
         ),
+
         actionIconTheme: ActionIconThemeData(
           backButtonIconBuilder: (context) {
             return Icon(Icons.arrow_back_ios_new);
@@ -81,6 +82,13 @@ class IconThemeScreen extends StatelessWidget {
             CloseButton(),
             DrawerButton(),
             EndDrawerButton(),
+            IconTheme(data: IconThemeData(color: Colors.pink, size: 40,), child: Icon(Icons.add_alert)),
+            Theme(
+              data: Theme.of(context).copyWith(
+                iconTheme: IconThemeData(color: Colors.red, size: 50),
+              ),
+              child: Icon(Icons.favorite),
+            ),
           ],
         ),
       ),
