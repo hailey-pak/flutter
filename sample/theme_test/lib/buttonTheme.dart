@@ -68,13 +68,13 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: AppBarScreen(),
+      home: ButtonThemScreen(),
     );
   }
 }
 
-class AppBarScreen extends StatelessWidget {
-  const AppBarScreen({super.key});
+class ButtonThemScreen extends StatelessWidget {
+  const ButtonThemScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
