@@ -15,13 +15,13 @@ class MyApp extends StatelessWidget {
         textTheme: const TextTheme(
             displayLarge: TextStyle(fontSize: 50, fontFamily: 'KoPubBatang')),
       ),
-      home: const AppBarScreen(),
+      home: const TextThemeScreen(),
     );
   }
 }
 
-class AppBarScreen extends StatelessWidget {
-  const AppBarScreen({super.key});
+class TextThemeScreen extends StatelessWidget {
+  const TextThemeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
