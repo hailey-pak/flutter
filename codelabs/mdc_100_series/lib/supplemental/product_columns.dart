@@ -29,19 +29,15 @@ class TwoProductCardColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
+    return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
       const spacerHeight = 44.0;
 
       double heightOfCards = (constraints.biggest.height - spacerHeight) / 2.0;
       double heightOfImages = heightOfCards - ProductCard.kTextBoxHeight;
-      // TODO: Change imageAspectRatio calculation (104)
-      double imageAspectRatio = constraints.biggest.width / heightOfImages;
+      double imageAspectRatio = heightOfImages >= 0.0 ? constraints.biggest.width / heightOfImages : 49.0 / 33.0;
 
-      // TODO: Replace Column with a ListView (104)
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      return ListView(
+        physics: const ClampingScrollPhysics(),
         children: <Widget>[
           Padding(
             padding: const EdgeInsetsDirectional.only(start: 28.0),
@@ -51,7 +47,7 @@ class TwoProductCardColumn extends StatelessWidget {
                     product: top!,
                   )
                 : SizedBox(
-                    height: heightOfCards,
+                    height: heightOfCards > 0 ? heightOfCards : spacerHeight,
                   ),
           ),
           const SizedBox(height: spacerHeight),
@@ -69,19 +65,21 @@ class TwoProductCardColumn extends StatelessWidget {
 }
 
 class OneProductCardColumn extends StatelessWidget {
-  const OneProductCardColumn({required this.product, Key? key})
-      : super(key: key);
+  const OneProductCardColumn({required this.product, Key? key}) : super(key: key);
 
   final Product product;
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Replace Column with a ListView (104)
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
+    return ListView(
+      physics: const ClampingScrollPhysics(),
+      reverse: true,
       children: <Widget>[
-        ProductCard(
-          product: product,
+        ConstrainedBox(
+          constraints: const BoxConstraints(
+            maxWidth: 550,
+          ),
+          child: ProductCard(product: product),
         ),
         const SizedBox(
           height: 40.0,
