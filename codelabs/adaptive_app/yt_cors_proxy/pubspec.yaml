@@ -1,0 +1,16 @@
+name: yt_cors_proxy
+description: A server app using the shelf package and Docker.
+version: 1.0.0
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: ^3.2.0
+
+dependencies:
+  http: ^1.2.0
+  shelf: ^1.4.0
+  shelf_cors_headers: ^0.1.5
+
+dev_dependencies:
+  lints: ^2.1.0
+  test: ^1.24.0
