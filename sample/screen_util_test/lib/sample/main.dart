@@ -5,7 +5,7 @@ import 'src/first_method.dart' as firstMethod;
 import 'src/second_method.dart' as secondMethod;
 
 void main() {
-  const method = int.fromEnvironment('method', defaultValue: 1);
+  const method = int.fromEnvironment('method', defaultValue: 2);
   runApp(
     DevicePreview(
       enabled: kDebugMode && kIsWeb,

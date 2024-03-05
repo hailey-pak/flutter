@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:screen_util_test/src/home.dart';
+import 'package:screen_util_test/sample/src/home.dart';
 
 /// Note that you still can use [Theme] to theme your widget, but if you want
 /// to theme MaterialApp you must use ScreenUtil.init in builder method and
@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // In first method you only need to wrap [MaterialApp] with [ScreenUtilInit] and that's it
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Second Method',
