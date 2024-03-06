@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
+  //스크린 유틸 안 쓰고 만들 경우 테스트
+
   runApp(const MyApp());
 }
 
@@ -10,14 +11,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(375, 812),
-      builder: (context, child) {
-        return const MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: HomeScreen(),
-        );
-      },
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
     );
   }
 }
@@ -30,18 +26,18 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Sign up',
           style: TextStyle(
-            fontSize: 16.sp,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
-        toolbarHeight: 56.h,
+        toolbarHeight: 56,
         backgroundColor: Colors.white,
-        leading: Icon(Icons.chevron_left, size: 24.w),
-        leadingWidth: 56.w,
+        leading: const Icon(Icons.chevron_left, size: 24),
+        leadingWidth: 56,
       ),
       body: Column(
         children: [
@@ -55,33 +51,33 @@ class HomeScreen extends StatelessWidget {
 
   Widget _frame1() {
     return Padding(
-      padding: EdgeInsets.all(16.w),
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
           _getTextField('First name'),
-          8.verticalSpace,
+          const SizedBox(height: 8),
           _getTextField('Last name'),
-          8.verticalSpace,
-          Text(
+          const SizedBox(height: 8),
+          const Text(
             'Make sure it matches the name on your government ID.',
             style: TextStyle(
-              color: const Color(0xFF64748B),
-              fontSize: 14.sp,
+              color: Color(0xFF64748B),
+              fontSize: 14,
             ),
           ),
-          16.verticalSpace,
+          const SizedBox(height: 16),
           _getTextField('Email'),
-          8.verticalSpace,
-          Text(
+          const SizedBox(height: 8),
+          const Text(
             'We will email you trip confirmations and receipts.',
             style: TextStyle(
-              color: const Color(0xFF64748B),
-              fontSize: 14.sp,
+              color: Color(0xFF64748B),
+              fontSize: 14,
             ),
           ),
-          16.verticalSpace,
+          const SizedBox(height: 16),
           _getTextField('Password', icon: Icons.visibility),
         ],
       ),
@@ -91,13 +87,13 @@ class HomeScreen extends StatelessWidget {
   Widget _getTextField(String title, {IconData? icon}) {
     return TextField(
       decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: const BorderRadius.all(Radius.circular(8)).w,
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(8)),
         ),
         hintText: title,
-        hintStyle: TextStyle(fontSize: 16.sp, color: const Color(0xFF64748B)),
+        hintStyle: const TextStyle(fontSize: 16, color: Color(0xFF64748B)),
         isDense: true,
-        contentPadding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
+        contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         suffixIcon: icon != null
             ? Icon(
                 icon,
@@ -110,15 +106,15 @@ class HomeScreen extends StatelessWidget {
 
   Widget _frame2() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           RichText(
-            text: TextSpan(
-                style: TextStyle(fontSize: 14.sp, color: const Color(0xFF020617)),
+            text: const TextSpan(
+                style: TextStyle(fontSize: 14, color: Color(0xFF020617)),
                 text: 'By selecting Agree and continue, I agree to Dynamic Layers ',
-                children: const <TextSpan>[
+                children: <TextSpan>[
                   TextSpan(
                     text: 'Terms of Service, Payments Terms of Service',
                     style: TextStyle(
@@ -145,19 +141,19 @@ class HomeScreen extends StatelessWidget {
                   TextSpan(text: '.'),
                 ]),
           ),
-          16.verticalSpace,
+          const SizedBox(height: 16),
           ElevatedButton(
             onPressed: null,
             style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               backgroundColor: const Color(0xFF7E49FF),
               disabledBackgroundColor: const Color(0xFFF1F5F9),
               minimumSize: const Size(double.maxFinite, double.minPositive),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8.w))),
+              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8))),
             ),
-            child: Text(
+            child: const Text(
               'Agree and continue',
-              style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: const Color(0xFFCBD5E1)),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFFCBD5E1)),
             ),
           ),
         ],
