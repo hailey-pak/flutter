@@ -15,8 +15,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   List<Menu> data = [];
 
-  TextEditingController controller = TextEditingController();
-
   @override
   void initState() {
     super.initState();
@@ -46,7 +44,6 @@ class _MyAppState extends State<MyApp> {
                 itemCount: data.length,
                 itemBuilder: (context, index) => _buildList(data[index]),
               ),
-              TextField(),
             ],
           ),
         ),
