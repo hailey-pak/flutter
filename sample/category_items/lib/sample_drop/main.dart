@@ -2,6 +2,7 @@ import 'package:category_items/sample_drop/category_item.dart';
 import 'package:category_items/sample_drop/category_menu_widget_1.dart';
 import 'package:category_items/sample_drop/category_menu_widget_2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   runApp(MyApp());
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
     CategoryItem(
       id: 'PC0300',
       icon: Icons.circle,
-      iconColor: Colors.green,
+      iconColor: Colors.yellow,
       label: '휴양시설',
       subCategories: [
         CategoryItem(id: 'PC0301', icon: Icons.chair, label: '의자'),
@@ -65,7 +66,7 @@ class MyApp extends StatelessWidget {
     CategoryItem(
       id: 'PC0400',
       icon: Icons.circle,
-      iconColor: Colors.blue,
+      iconColor: Colors.green,
       label: '유희시설',
       subCategories: [
         CategoryItem(id: 'PC0401', label: '어린이놀이시설', icon: Icons.child_care),
@@ -77,7 +78,7 @@ class MyApp extends StatelessWidget {
     CategoryItem(
       id: 'PC0500',
       icon: Icons.circle,
-      iconColor: Colors.purple,
+      iconColor: Colors.blue,
       label: '운동시설',
       subCategories: [
         CategoryItem(id: 'PC0501', label: '운동기구', icon: Icons.sports),
@@ -89,7 +90,7 @@ class MyApp extends StatelessWidget {
     CategoryItem(
       id: 'PC0600',
       icon: Icons.circle,
-      iconColor: Colors.pink,
+      iconColor: Colors.indigoAccent,
       label: '교양시설',
       subCategories: [
         CategoryItem(id: 'PC0601', label: '공연장/무대시설', icon: Icons.theater_comedy),
@@ -99,7 +100,7 @@ class MyApp extends StatelessWidget {
     CategoryItem(
       id: 'PC0700',
       icon: Icons.circle,
-      iconColor: Colors.amber,
+      iconColor: Colors.purple,
       label: '편익시설',
       subCategories: [
         CategoryItem(id: 'PC0701', label: '화장실', icon: Icons.man),
@@ -112,7 +113,7 @@ class MyApp extends StatelessWidget {
     CategoryItem(
       id: 'PC0800',
       icon: Icons.circle,
-      iconColor: Colors.brown,
+      iconColor: Colors.pink,
       label: '도시농업시설',
       subCategories: [
         CategoryItem(id: 'PC0801', label: '도시텃밭', icon: Icons.density_small),
@@ -142,20 +143,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        useMaterial3: true,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Category Menu Widget'),
+    return ScreenUtilInit(
+      child: MaterialApp(
+        theme: ThemeData(
+          useMaterial3: true,
         ),
-        body: Column(
-          children: [
-            CategoryMenuWidget(categoryItems: categoryItems),
-            const SizedBox(height: 10),
-            CategoryMenuWidget2(categoryItems: categoryItems),
-          ],
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text('Category Menu Widget'),
+          ),
+          body: Column(
+            children: [
+              CategoryMenuWidget(categoryItems: categoryItems),
+              const SizedBox(height: 10),
+              CategoryMenuWidget2(categoryItems: categoryItems),
+            ],
+          ),
         ),
       ),
     );

@@ -1,8 +1,8 @@
-
 import 'package:category_items/sample_drop/category_item.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryMenuWidget2 extends StatefulWidget {
   const CategoryMenuWidget2({
@@ -21,53 +21,23 @@ class _CategoryMenuWidget2State extends State<CategoryMenuWidget2> {
   late CategoryItem selected;
   final ScrollController _scrollController = ScrollController();
 
+  late double textLength;
+
   @override
   void initState() {
     super.initState();
 
-    menus = widget.categoryItems.map((CategoryItem item) {
-      return DropdownMenuItem(
-        value: item,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(item.icon, color: item.iconColor),
-            const SizedBox(width: 8.0),
-            Text(item.label),
-            const SizedBox(width: 8.0),
-            Expanded(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: item.subCategories.map((sub) {
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
-                      child: Chip(
-                        padding: EdgeInsets.zero,
-                        avatar: Icon(
-                          sub.visible ? sub.icon : Icons.adjust,
-                          color: sub.visible ? selected.iconColor : Colors.grey,
-                          size: 24,
-                        ),
-                        label: Text(sub.label),
-                        labelPadding: EdgeInsets.zero,
-                        backgroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16.0),
-                          side: BorderSide(color: Colors.white),
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    }).toList();
+    ScreenUtil().setSp(15);
 
-    selected = menus.first.value!;
+    int maxLength = 0;
+    for (CategoryItem item in widget.categoryItems) {
+      if (item.label.length > maxLength) {
+        maxLength = item.label.length;
+      }
+    }
+    textLength = 15.sp * maxLength;
+
+    selected = widget.categoryItems.first;
   }
 
   @override
@@ -78,23 +48,46 @@ class _CategoryMenuWidget2State extends State<CategoryMenuWidget2> {
 
   @override
   Widget build(BuildContext context) {
+    print('----------------build----------------');
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
           _dropMenu(),
-          const SizedBox(width: 8.0),
-          Expanded(child: _subMenuChip()),
+          const SizedBox(width: 16.0),
+          Expanded(child: _subCategoryChips(selected)),
         ],
       ),
     );
   }
 
   Widget _dropMenu() {
+    print('dropMenu');
     return DropdownButtonHideUnderline(
       child: DropdownButton2(
         customButton: Icon(selected.icon, color: selected.iconColor),
-        items: menus,
+        items: widget.categoryItems.map((CategoryItem item) {
+          return DropdownMenuItem(
+            value: item,
+            child: Row(
+              children: [
+                Icon(item.icon, color: item.iconColor),
+                const SizedBox(width: 8.0),
+                SizedBox(
+                  width: textLength,
+                  child: Text(
+                    item.label,
+                    style: TextStyle(fontSize: 15.sp),
+                  ),
+                ),
+                const SizedBox(width: 16.0),
+                Expanded(
+                  child: _subCategoryChips(item),
+                ),
+              ],
+            ),
+          );
+        }).toList(),
         onChanged: (value) async {
           await _scrollController.animateTo(
             0.0,
@@ -118,51 +111,23 @@ class _CategoryMenuWidget2State extends State<CategoryMenuWidget2> {
         ),
       ),
     );
-    return DropdownMenu<CategoryItem>(
-      initialSelection: selected,
-      inputDecorationTheme: const InputDecorationTheme(
-        border: InputBorder.none,
-        suffixIconColor: Colors.transparent,
-        filled: true,
-        labelStyle: TextStyle(fontSize: 0),
-      ),
-      trailingIcon: null,
-      leadingIcon: Icon(selected.icon, color: selected.iconColor),
-      width: 50,
-      textStyle: TextStyle(fontSize: 0),
-      menuStyle: const MenuStyle(
-        backgroundColor: MaterialStatePropertyAll<Color>(Colors.transparent),
-        elevation: MaterialStatePropertyAll<double>(0),
-        shape: MaterialStatePropertyAll<ContinuousRectangleBorder>(ContinuousRectangleBorder()),
-      ),
-      dropdownMenuEntries: widget.categoryItems.map((CategoryItem item) {
-        return DropdownMenuEntry(
-          value: item,
-          label: item.label,
-          leadingIcon: Icon(item.icon, color: item.iconColor),
-        );
-      }).toList(),
-      onSelected: (CategoryItem? value) {
-        setState(() {
-          selected = value!;
-        });
-      },
-    );
   }
 
-  Widget _subMenuChip() {
+  Widget _subCategoryChips(CategoryItem item) {
+    print('_subCategoryChips');
     return SingleChildScrollView(
       controller: _scrollController,
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: selected.subCategories.map((sub) {
+        mainAxisSize: MainAxisSize.max,
+        children: item.subCategories.map((sub) {
           return Padding(
             padding: const EdgeInsets.only(right: 8.0),
             child: RawChip(
               padding: EdgeInsets.zero,
               avatar: Icon(
-                sub.visible ? sub.icon : Icons.adjust,
-                color: sub.visible ? selected.iconColor : Colors.grey,
+                sub.icon,
+                color: sub.visible ? item.iconColor : Colors.grey,
                 size: 24,
               ),
               onPressed: () {
@@ -172,10 +137,10 @@ class _CategoryMenuWidget2State extends State<CategoryMenuWidget2> {
               },
               label: Container(),
               labelPadding: EdgeInsets.zero,
-              backgroundColor: Colors.white,
+              // backgroundColor: Colors.white,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16.0),
-                side: BorderSide(color: Colors.white),
+                // borderRadius: BorderRadius.circular(16.0),
+                side: const BorderSide(color: Colors.transparent),
               ),
             ),
           );
