@@ -31,7 +31,13 @@ class _CategoryDropAndSubChipsState extends State<CategoryDropAndSubChips> {
 
     _controller.selectedNotifier.addListener(_selectedValueChanged);
     _controller.itemsNotifier.addListener(_visibleChanged);
+  }
 
+  @override
+  void dispose() {
+    _controller.dispose();
+    _subController.dispose();
+    super.dispose();
   }
 
   void _visibleChanged() {
@@ -51,22 +57,20 @@ class _CategoryDropAndSubChipsState extends State<CategoryDropAndSubChips> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        children: [
-          CategoryDropMenu(
-            categoryItems: widget.categoryItems,
-            controller: _controller,
+    return Row(
+      children: [
+        CategoryDropMenu(
+          categoryItems: widget.categoryItems,
+          controller: _controller,
+        ),
+        const SizedBox(width: 16.0),
+        Expanded(
+          child: SubCategoryChips(
+            category: _controller.selected,
+            controller: _subController,
           ),
-          const SizedBox(width: 16.0),
-          Expanded(
-            child: SubCategoryChips(
-              category: _controller.selected,
-              controller: _subController,
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

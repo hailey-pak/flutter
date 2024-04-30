@@ -27,7 +27,7 @@ class CategoryDropMenuController {
   void visibleChanged(CategoryItem item) {
     changed = item;
     itemsNotifier.value = itemsNotifier.value.map((e) {
-      if (e == item) {
+      if (e.id == item.id) {
         return item;
       } else {
         return e;
@@ -43,7 +43,7 @@ class CategoryDropMenuController {
     List<String> list = [];
 
     for (CategoryItem item in itemsNotifier.value) {
-      if (item.subCategories != null && item.subCategories.isNotEmpty) {
+      if (item.subCategories.isNotEmpty) {
         for (CategoryItem sub in item.subCategories) {
           if (sub.visible) list.add(sub.label);
         }
@@ -80,7 +80,6 @@ class CategoryDropMenu extends StatefulWidget {
 class _CategoryDropMenuState extends State<CategoryDropMenu> {
   late double textLength;
   late List<DropdownMenuItem> list;
-
   late CategoryDropMenuController _controller;
 
   @override
@@ -100,7 +99,7 @@ class _CategoryDropMenuState extends State<CategoryDropMenu> {
     // 위젯 컨트롤러가 null이면 새로 생성
     _controller = widget.controller ?? CategoryDropMenuController(widget.categoryItems);
 
-    list = _controller.itemsNotifier.value.map((CategoryItem item) {
+    list = widget.categoryItems.map((CategoryItem item) {
       return DropdownMenuItem(
         value: item,
         child: Row(
@@ -129,6 +128,7 @@ class _CategoryDropMenuState extends State<CategoryDropMenu> {
 
   @override
   void dispose() {
+    _controller.dispose();
     super.dispose();
   }
 

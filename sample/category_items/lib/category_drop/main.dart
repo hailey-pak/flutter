@@ -49,6 +49,12 @@ class _MyScreenState extends State<MyScreen> {
     controller.visibleListNotifier.addListener(_getVisibleList);
   }
 
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   void _getVisibleList(){
     // String arrayRepresentation = controller.visibleList.join(', ');
     // print('[$arrayRepresentation]');

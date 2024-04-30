@@ -29,6 +29,10 @@ class SubCategoryChipsController {
       subCategories: newSubs,
     );
   }
+
+  void dispose() {
+    itemNotifier.dispose();
+  }
 }
 
 class SubCategoryChips extends StatefulWidget {
@@ -69,6 +73,8 @@ class _SubCategoryChipsState extends State<SubCategoryChips> {
 
   @override
   void dispose() {
+    _controller.dispose();
+    _categoryDropMenuController.dispose();
     super.dispose();
   }
 
